@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Register - Senaoane</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="top-red"></div>
+<div class="nav"><a href="index.html" class="logo"><b>← SENAOANE</b></a><a href="https://wa.me/27765269828" class="btn btn-green">0765269828</a></div>
+<div style="max-width:600px;margin:40px auto;padding:24px" class="card">
+<h1>Register on Senaoane Database</h1>
+<p style="opacity:0.7;margin:8px 0">Registration required before uploading videos/images to forum</p>
+<form id="regForm">
+<input class="input" name="full_name" placeholder="Full Name" required>
+<input class="input" name="phone" placeholder="Phone / WhatsApp e.g. 0765269828" required>
+<input class="input" name="area" placeholder="Area in Senaoane e.g. Zone 10" required>
+<select class="input" name="interest" required>
+<option value="">Select Interest</option>
+<option>Business</option><option>Jobs</option><option>Events</option><option>News</option><option>Community Meetings</option><option>Sports</option><option>Funeral</option>
+</select>
+<button class="btn btn-red" style="width:100%;margin-top:12px" type="submit">Register & Get Upload Access</button>
+</form>
+<div id="success" style="display:none;margin-top:20px;background:#0a2a0a;padding:16px;border-radius:8px">
+<h3>✅ Registered!</h3><p>You now have access to upload videos and images to the blog/community forum.</p>
+<a href="upload.html" class="btn btn-red">Go to Upload Page</a>
+<a href="forum.html" class="btn btn-dark">Go to Forum</a>
+</div>
+</div>
+<script src="js/app.js"></script>
+<script>
+document.getElementById('regForm').addEventListener('submit', e=>{
+ e.preventDefault();
+ const fd = new FormData(e.target);
+ const user = Object.fromEntries(fd.entries());
+ user.whatsapp = '0765269828';
+ DB.saveUser(user);
+ // In production: supabase.from('users').insert(user)
+ document.getElementById('regForm').style.display='none';
+ document.getElementById('success').style.display='block';
+});
+</script>
+</body></html>

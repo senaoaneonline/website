@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Upload - Senaoane</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="top-red"></div>
+<div class="nav"><a href="index.html" class="logo"><b>← SENAOANE</b></a><span id="userBadge"></span></div>
+
+<div style="max-width:800px;margin:20px auto;padding:0 16px">
+<div class="card">
+<h1>Upload Video (YouTube) & Images to Community Forum</h1>
+<p style="opacity:0.7">Your video stays on original YouTube page, but streamed from our community page. Registration required.</p>
+
+<form id="uploadForm" style="margin-top:16px">
+<label>Category</label>
+<select class="input" name="category" required>
+<option value="GENERAL">General</option><option value="SPORTS">Sports Announcements</option><option value="COMMUNITY">Community Meetings</option><option value="JOBS">Jobs Announcements</option><option value="EVENTS">Events Announcements</option><option value="NEWS">News Announcements</option>
+</select>
+
+<label>Title</label>
+<input class="input" name="title" placeholder="e.g. Elkah Stadium Match Highlights" required>
+
+<label>Description</label>
+<textarea class="input" name="description" rows="3" placeholder="What is this about?"></textarea>
+
+<label>Original YouTube Link (Video will be streamed from community page)</label>
+<input class="input" name="youtube_url" placeholder="https://www.youtube.com/watch?v=..." >
+
+<label>Or Upload Image</label>
+<input class="input" type="file" id="imageFile" accept="image/*">
+
+<div id="preview" style="margin:12px 0"></div>
+
+<button class="btn btn-red" type="submit" style="width:100%">Publish to Community Forum</button>
+</form>
+</div>
+
+<div id="myPosts" class="grid" style="margin-top:24px"></div>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+const user = requireAuth();
+if(user) document.getElementById('userBadge').textContent = 'Hi, '+user.full_name+' | WhatsApp: 0765269828';
+
+document.getElementById('imageFile').addEventListener('change', e=>{
+ const file = e.target.files[0];
+ if(!file) return;
+ const reader = new FileReader();
+ reader.onload = ev=>{
+   window.uploadedImageData = ev.target.result;
+   document.getElementById('preview').innerHTML = `<img src="${ev.target.result}" style="max-width:100%;border-radius:8px">`;
+ };
+ reader.readAsDataURL(file);
+});
+
+document.getElementById('uploadForm').addEventListener('submit', e=>{
+ e.preventDefault();
+ const fd = new FormData(e.target);
+ const data = Object.fromEntries(fd.entries());
+ data.youtube_id = extractYouTubeID(data.youtube_url);
+ data.user_name = user.full_name;
+ data.image_data = window.uploadedImageData || '';
+ if(!data.youtube_id && !data.image_data){alert('Please add a YouTube link or an image'); return;}
+ DB.savePost(data);
+ // Production: await supabase.from('posts').insert({...data, image_url: uploadedCloudinaryUrl})
+ alert('Published! Check forum.');
+ renderPosts('myPosts');
+ e.target.reset();
+ document.getElementById('preview').innerHTML='';
+ window.uploadedImageData='';
+});
+
+renderPosts('myPosts');
+</script>
+</body></html>
