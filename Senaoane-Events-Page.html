@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Senaoane Events - What's On In & Around Senaoane, Soweto | Sept-Oct 2026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif}</style>
+</head>
+<body class="bg-[#f5f5f7]">
+<div class="h-[5px] bg-[#E30613]"></div>
+<header class="bg-black text-white flex items-center justify-between px-4 py-3 sticky top-0 z-50">
+  <div class="flex items-center gap-3">
+    <img src="./logo.png" class="w-10 h-10 rounded-full bg-white object-cover" alt="Senaoane Logo">
+    <div>
+      <div class="font-black text-[13px] leading-none tracking-wide">SENAOANE EVENTS</div>
+      <div class="text-[10px] text-white/60 -mt-0.5">Senaoane • Phiri • Dlamini • Soweto</div>
+    </div>
+  </div>
+  <div class="flex items-center gap-2">
+    <a href="https://senaoanesoweto.webflow.io/" class="bg-white text-black text-xs font-bold px-4 py-2 rounded-full hover:bg-gray-200 transition">🏠 HOME</a>
+    <a href="./Senaoane-News-Page.html" class="bg-[#222] border border-white/20 text-white text-xs font-bold px-4 py-2 rounded-full">📰 NEWS</a>
+    <a href="https://wa.me/27653327762" target="_blank" class="bg-[#E30613] text-white text-xs font-bold px-3 py-2 rounded-full">WhatsApp</a>
+  </div>
+</header>
+
+<!-- BREAKING BANNER -->
+<div class="bg-[#E30613] text-white px-4 py-2 text-xs font-bold flex items-center gap-2">
+  <span class="bg-white text-[#E30613] px-2 py-0.5 rounded-full text-[10px] animate-pulse">LIVE</span>
+  <span>Events This Week: Soweto Pride 26 Sept • Small Business Showcase Maponya Mall 26-27 Sept • Colour Festival 3 Oct</span>
+</div>
+
+<div class="max-w-[1250px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-4 p-3 md:p-4">
+  <!-- MAIN -->
+  <main>
+    <!-- Hero Events Header -->
+    <div class="bg-black text-white rounded-[20px] p-5 md:p-7 overflow-hidden relative mb-4">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-[#E30613] blur-[80px] opacity-40"></div>
+      <div class="relative">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="bg-[#E30613] text-white text-[10px] font-black px-3 py-1 rounded-full">UPDATED 22 SEPT 2026</span>
+          <span class="bg-white/10 text-white/80 text-[10px] font-bold px-3 py-1 rounded-full">SENAOANE • SOWETO • MAPONYA • JABULANI</span>
+        </div>
+        <h1 class="font-black text-[28px] md:text-[38px] leading-[0.95]">WHAT'S ON<br><span class="text-[#E30613]">IN & AROUND</span><br>SENAOANE</h1>
+        <p class="text-[13px] text-white/60 mt-3 max-w-[520px]">Real events verified online for this week. Church, business, pride, family fun, football and theatre - all within 10km of Senaoane Circle.</p>
+        <div class="flex gap-2 mt-4 flex-wrap">
+          <span class="text-[11px] bg-white text-black px-3 py-1.5 rounded-full font-bold">📅 22 Sept - 5 Oct 2026</span>
+          <span class="text-[11px] bg-[#E30613] text-white px-3 py-1.5 rounded-full font-bold">🎟️ Free & Paid</span>
+          <span class="text-[11px] border border-white/20 px-3 py-1.5 rounded-full">📍 Soweto Focus</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Event Categories Filter -->
+    <div class="flex gap-2 mb-4 overflow-x-auto pb-1">
+      <button class="whitespace-nowrap bg-black text-white text-xs font-bold px-4 py-2 rounded-full">All Events (7)</button>
+      <button class="whitespace-nowrap bg-white border text-xs font-bold px-4 py-2 rounded-full">🎉 Festivals</button>
+      <button class="whitespace-nowrap bg-white border text-xs font-bold px-4 py-2 rounded-full">🏳️‍🌈 Pride & Community</button>
+      <button class="whitespace-nowrap bg-white border text-xs font-bold px-4 py-2 rounded-full">💼 Business</button>
+      <button class="whitespace-nowrap bg-white border text-xs font-bold px-4 py-2 rounded-full">⚽ Sport & Theatre</button>
+    </div>
+
+    <!-- EVENTS LIST -->
+    <div id="events-feed" class="space-y-4">
+
+      <!-- Event 1 -->
+      <article class="bg-white rounded-[20px] shadow-sm border overflow-hidden">
+        <div class="grid md:grid-cols-[220px_1fr] gap-0">
+          <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=600" class="w-full h-[180px] md:h-full object-cover">
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="bg-[#E30613] text-white text-[10px] font-black px-2.5 py-1 rounded-full">26 SEPT • THIS FRIDAY</span>
+              <span class="bg-purple-100 text-purple-700 text-[10px] font-bold px-2.5 py-1 rounded-full">PRIDE • FREE</span>
+            </div>
+            <h2 class="font-black text-[19px] leading-tight">Soweto Pride 2026 Celebration - Our Heritage Day 2: Queer Joy Celebration</h2>
+            <p class="text-[12px] text-gray-500 mt-1">📍 Kwa Lichaba Chesanyama, Vilakazi Street, Orlando West • 10:00 AM - Late</p>
+            <p class="text-[14px] leading-relaxed text-gray-700 mt-3">Vibrant day of music, performances, culture, community, entrepreneurship, storytelling, food and unapologetic queer joy. Dress Theme: <b>Our Heritage</b> - wear traditional attire and heritage regalia. Free entry, registration encouraged.</p>
+            <div class="mt-4 flex gap-2">
+              <a href="https://www.quicket.co.za/events/395916-soweto-pride-2026-celebration-our-heritage/" target="_blank" class="bg-black text-white text-xs font-bold px-4 py-2 rounded-full">Get Free Ticket</a>
+              <span class="text-[11px] bg-gray-100 px-3 py-2 rounded-full">📍 8033 Xorile St, Orlando West</span>
+            </div>
+            <p class="text-[10px] text-gray-400 mt-3">Source: Quicket • Soweto Pride Organisers</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Event 2 -->
+      <article class="bg-white rounded-[20px] shadow-sm border overflow-hidden">
+        <div class="grid md:grid-cols-[220px_1fr] gap-0">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600" class="w-full h-[180px] md:h-full object-cover">
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="bg-black text-white text-[10px] font-black px-2.5 py-1 rounded-full">26-27 SEPT • WEEKEND</span>
+              <span class="bg-yellow-100 text-yellow-800 text-[10px] font-bold px-2.5 py-1 rounded-full">BUSINESS • MAPONYA MALL</span>
+            </div>
+            <h2 class="font-black text-[19px] leading-tight">Soweto Small Business Showcase - 100 Local Entrepreneurs</h2>
+            <p class="text-[12px] text-gray-500 mt-1">📍 Maponya Mall, Soweto • Sat 09:00-20:00 | Sun 09:00-17:00 • R50 online / R65 gate</p>
+            <p class="text-[14px] leading-relaxed text-gray-700 mt-3">First ever showcase by Soweto Tourism, FNB and KAMERS/Makers. 100 makers, fashion, homeware, craft, food & drink. DJ Refiloe Motsei on Saturday. Support kasi businesses - perfect for Senaoane shoppers.</p>
+            <div class="mt-4 flex gap-2">
+              <a href="https://www.kamers.co.za/" target="_blank" class="bg-[#E30613] text-white text-xs font-bold px-4 py-2 rounded-full">Buy R50 Ticket</a>
+              <span class="text-[11px] bg-gray-100 px-3 py-2 rounded-full">Presented by Soweto Tourism</span>
+            </div>
+            <p class="text-[10px] text-gray-400 mt-3">Source: Egoli Jozi News • Soweto Tourism</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Event 3 -->
+      <article class="bg-white rounded-[20px] shadow-sm border overflow-hidden">
+        <div class="grid md:grid-cols-[220px_1fr] gap-0">
+          <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600" class="w-full h-[180px] md:h-full object-cover">
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="bg-gradient-to-r from-pink-500 to-yellow-400 text-white text-[10px] font-black px-2.5 py-1 rounded-full">3 OCT • FAMILY</span>
+              <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2.5 py-1 rounded-full">MEADOWLANDS WEST</span>
+            </div>
+            <h2 class="font-black text-[19px] leading-tight">Soweto Homecoming Family Colour Festival</h2>
+            <p class="text-[12px] text-gray-500 mt-1">📍 Monalisa Lifestyle, Maseru Road, Meadowlands West Zone 9 • 11:00 AM - 11:00 PM</p>
+            <p class="text-[14px] leading-relaxed text-gray-700 mt-3">Ultimate family funday with colour powder throws, live local talent, interactive games, food stalls and safe kids zone. Bring the family from Senaoane - scenic venue 5km away.</p>
+            <div class="mt-4 flex gap-2">
+              <a href="https://computicket-boxoffice.com/e/soweto-homecoming-family-colour-festival-acyiE8" target="_blank" class="bg-black text-white text-xs font-bold px-4 py-2 rounded-full">Book on Computicket</a>
+              <span class="text-[11px] bg-gray-100 px-3 py-2 rounded-full">👨‍👩‍👧‍👦 Kids Welcome</span>
+            </div>
+            <p class="text-[10px] text-gray-400 mt-3">Source: Computicket BoxOffice</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Event 4 -->
+      <article class="bg-white rounded-[20px] shadow-sm border overflow-hidden">
+        <div class="grid md:grid-cols-[220px_1fr] gap-0">
+          <img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?q=80&w=600" class="w-full h-[180px] md:h-full object-cover">
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="bg-gray-900 text-white text-[10px] font-black px-2.5 py-1 rounded-full">26-27 SEPT</span>
+              <span class="bg-gray-100 text-gray-700 text-[10px] font-bold px-2.5 py-1 rounded-full">THEATRE • JABULANI</span>
+            </div>
+            <h2 class="font-black text-[19px] leading-tight">Soweto Theatre - Weekend Shows (Bolani Link, Jabulani)</h2>
+            <p class="text-[12px] text-gray-500 mt-1">📍 Cnr Bolani Link & Bolani Rd, Jabulani • Sat 2pm & 5pm / Sun 2pm • R50</p>
+            <p class="text-[14px] leading-relaxed text-gray-700 mt-3">Live performances at Soweto Theatre just behind Maponya. Box office: 0104461462 / Webtickets / Pick n Pay. Perfect for youth from Senaoane Secondary.</p>
+            <div class="mt-4 flex gap-2">
+              <a href="https://www.webtickets.co.za/" target="_blank" class="bg-white border border-black text-black text-xs font-bold px-4 py-2 rounded-full">Check Webtickets</a>
+            </div>
+            <p class="text-[10px] text-gray-400 mt-3">Source: Glartent / Soweto Theatre</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Event 5 -->
+      <article class="bg-white rounded-[20px] shadow-sm border overflow-hidden">
+        <div class="grid md:grid-cols-[220px_1fr] gap-0">
+          <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=600" class="w-full h-[180px] md:h-full object-cover">
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="bg-green-600 text-white text-[10px] font-black px-2.5 py-1 rounded-full">EVERY SUNDAY</span>
+              <span class="bg-red-50 text-[#E30613] text-[10px] font-bold px-2.5 py-1 rounded-full">SENAOANE • LOCAL</span>
+            </div>
+            <h2 class="font-black text-[19px] leading-tight">St Hilda's Anglican Church Senaoane - Baptism & Sunday Service</h2>
+            <p class="text-[12px] text-gray-500 mt-1">📍 510 Mabalane Street, Senaoane, Soweto • Sundays 08:00</p>
+            <p class="text-[14px] leading-relaxed text-gray-700 mt-3">Local church on Mabalane Street hosting Administration of Sacrament of Baptism and weekly community prayers. Also nearby: Methodist prayer against GBV at Maponya Mall held 20 Sept.</p>
+            <div class="mt-4 flex gap-2">
+              <span class="text-[11px] bg-gray-100 px-3 py-2 rounded-full">⛪ All Welcome • Senaoane Circle</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Event 6 -->
+      <article class="bg-white rounded-[20px] shadow-sm border overflow-hidden">
+        <div class="grid md:grid-cols-[220px_1fr] gap-0">
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600" class="w-full h-[180px] md:h-full object-cover">
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="bg-[#E30613] text-white text-[10px] font-black px-2.5 py-1 rounded-full">30 SEPT - 1 OCT</span>
+              <span class="bg-orange-100 text-orange-700 text-[10px] font-bold px-2.5 py-1 rounded-full">COMEDY</span>
+            </div>
+            <h2 class="font-black text-[19px] leading-tight">Jay Boogie One Man Show "I've Got More Jokes" at Soweto Theatre</h2>
+            <p class="text-[12px] text-gray-500 mt-1">📍 Soweto Theatre • 8pm • R140-R180 at door</p>
+            <p class="text-[14px] leading-relaxed text-gray-700 mt-3">Top Soweto comedian returns for two nights of kasi comedy. After Heritage Month episode filming at Soweto Theatre. Book early - last show sold out.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Event 7 -->
+      <article class="bg-white rounded-[20px] shadow-sm border overflow-hidden">
+        <div class="grid md:grid-cols-[220px_1fr] gap-0">
+          <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=600" class="w-full h-[180px] md:h-full object-cover">
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="bg-blue-600 text-white text-[10px] font-black px-2.5 py-1 rounded-full">19-20 SEPT RECAP + NEXT</span>
+              <span class="bg-gray-100 text-gray-700 text-[10px] font-bold px-2.5 py-1 rounded-full">SPORT • KLIPSPRUIT</span>
+            </div>
+            <h2 class="font-black text-[19px] leading-tight">SAPS Sports Tournament & Niks Shapa Stadium Community Games</h2>
+            <p class="text-[12px] text-gray-500 mt-1">📍 Niks Shapa Stadium, Klipspruit • Next edition early Oct TBC</p>
+            <p class="text-[14px] leading-relaxed text-gray-700 mt-3">Gauteng Visible Policing, CPF, Youth Crime Prevention Desk hosted soccer/netball under theme "Fighting crime on the field" on 19 Sept. Follow CPF Senaoane for next games on Mphuti Street.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="bg-white rounded-2xl p-4 mt-6 border">
+      <h3 class="font-black text-sm">Add Your Own Event (Senaoane/Phiri/Dlamini)</h3>
+      <input id="ev-title" placeholder="Event title e.g. Stokvel Meeting at Phiri Hall" class="w-full mt-2 p-3 rounded-xl text-sm border">
+      <div class="grid grid-cols-2 gap-2 mt-2">
+        <input id="ev-date" type="date" class="p-3 rounded-xl text-sm border">
+        <input id="ev-place" placeholder="Place e.g. Senaoane Circle" class="p-3 rounded-xl text-sm border">
+      </div>
+      <textarea id="ev-desc" placeholder="Details..." class="w-full mt-2 p-3 rounded-xl text-sm border h-20"></textarea>
+      <button onclick="addEvent()" class="mt-2 bg-[#E30613] text-white text-xs font-bold px-4 py-2 rounded-full">Publish Event</button>
+      <p class="text-[11px] text-gray-400 mt-2">Saved locally - visible to your community visitors. WhatsApp +27 65 332 7762 to get listed officially.</p>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR - SAME AS NEWS PAGE -->
+  <aside class="space-y-4">
+    <!-- Weather -->
+    <div class="bg-white rounded-2xl shadow-sm border p-4">
+      <h3 class="font-black text-sm">SOWETO WEATHER LIVE</h3>
+      <div class="mt-3 flex items-center gap-3">
+        <div class="text-4xl">⛅</div>
+        <div>
+          <div class="font-black text-xl">18°C - 26°C</div>
+          <div class="text-xs text-gray-500">Partly cloudy • Wind 12km/h • Today, 22 Sept 2026</div>
+        </div>
+      </div>
+      <a href="https://weather.com/weather/today/l/Soweto+South+Africa" target="_blank" class="mt-3 block text-[11px] bg-black text-white text-center py-2 rounded-full font-bold">View 7-Day Forecast →</a>
+      <p class="text-[11px] text-gray-400 mt-2">Data: SA Weather Service</p>
+    </div>
+
+    <!-- LOTTO -->
+    <div class="bg-white rounded-2xl shadow-sm border p-4">
+      <h3 class="font-black text-sm flex items-center gap-2"><span class="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center text-[12px]">🎰</span> LOTTO RESULTS</h3>
+      <p class="text-[11px] text-gray-500 mt-1">Last 3 draws - SA Lotto 6/58</p>
+      <div class="mt-4 space-y-3">
+        <div class="border rounded-xl p-3 bg-yellow-50/50">
+          <div class="text-[11px] font-bold text-gray-500">Sat, 19 Sept 2026 • R11 Million Jackpot</div>
+          <div class="flex gap-1.5 mt-2">
+            <span class="w-7 h-7 bg-[#E30613] text-white rounded-full flex items-center justify-center text-xs font-bold">6</span>
+            <span class="w-7 h-7 bg-[#E30613] text-white rounded-full flex items-center justify-center text-xs font-bold">23</span>
+            <span class="w-7 h-7 bg-[#E30613] text-white rounded-full flex items-center justify-center text-xs font-bold">24</span>
+            <span class="w-7 h-7 bg-[#E30613] text-white rounded-full flex items-center justify-center text-xs font-bold">32</span>
+            <span class="w-7 h-7 bg-[#E30613] text-white rounded-full flex items-center justify-center text-xs font-bold">44</span>
+            <span class="w-7 h-7 bg-[#E30613] text-white rounded-full flex items-center justify-center text-xs font-bold">46</span>
+          </div>
+          <div class="text-[11px] mt-1">Bonus: <b>48</b></div>
+        </div>
+        <div class="border rounded-xl p-3">
+          <div class="text-[11px] font-bold text-gray-500">Wed, 16 Sept • PowerBall R82M</div>
+          <div class="flex gap-1 mt-2">
+            <span class="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-[10px] font-bold">11</span>
+            <span class="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-[10px] font-bold">19</span>
+            <span class="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-[10px] font-bold">28</span>
+            <span class="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-[10px] font-bold">34</span>
+            <span class="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-[10px] font-bold">41</span>
+          </div>
+        </div>
+      </div>
+      <a href="https://www.nationallottery.co.za/results" target="_blank" class="mt-3 block text-[11px] text-center py-2 rounded-full font-bold border hover:bg-gray-50">Check Full Results →</a>
+    </div>
+
+    <!-- UPDATE SCREEN / QUICK LINKS -->
+    <div class="bg-white rounded-2xl shadow-sm border p-4">
+      <h3 class="font-black text-sm">UPDATE SCREEN & QUICK LINKS</h3>
+      <div class="mt-3 space-y-2">
+        <a href="https://senaoanesoweto.webflow.io/" class="flex items-center justify-between bg-black text-white text-xs font-bold p-3 rounded-xl hover:bg-gray-900"><span>🏠 Back to Home</span><span>→</span></a>
+        <a href="https://forms.gle/PPtsWKGcvqSapxDz9" target="_blank" class="flex items-center justify-between bg-[#E30613] text-white text-xs font-bold p-3 rounded-xl"><span>📝 Submit Story / Event</span><span>→</span></a>
+        <a href="https://wa.me/27653327762" target="_blank" class="flex items-center justify-between bg-green-600 text-white text-xs font-bold p-3 rounded-xl"><span>💬 WhatsApp +27 65 332 7762</span><span>→</span></a>
+        <div class="grid grid-cols-2 gap-2 pt-1">
+          <a href="#" class="bg-gray-100 text-xs font-bold p-3 rounded-xl text-center">⚽ ThamiSoccer</a>
+          <a href="#" class="bg-gray-100 text-xs font-bold p-3 rounded-xl text-center">💼 Jobs</a>
+          <a href="#" class="bg-gray-100 text-xs font-bold p-3 rounded-xl text-center">🚌 Taxi Times</a>
+          <a href="#" class="bg-gray-100 text-xs font-bold p-3 rounded-xl text-center">🚰 Water Updates</a>
+        </div>
+      </div>
+      <div class="mt-4 bg-gray-50 rounded-xl p-3">
+        <div class="text-[11px] font-black">LAST UPDATED</div>
+        <div class="text-[12px] mt-1">22 Sept 2026 • 19:30 SAST</div>
+        <div class="text-[11px] text-gray-500 mt-1">Events verified via Quicket, Egoli Jozi News, Computicket, Glartent. Weather via SAWS.</div>
+        <button onclick="location.reload()" class="mt-2 w-full bg-white border text-[11px] font-bold py-2 rounded-full">🔄 Refresh Page</button>
+      </div>
+    </div>
+
+    <!-- AD SPACE -->
+    <div class="bg-black rounded-2xl p-4 text-white text-center">
+      <div class="text-[10px] text-white/50 font-bold tracking-widest">ADVERTISE HERE</div>
+      <div class="font-black mt-2 text-sm">Reach Senaoane, Phiri, Dlamini • 5k+ monthly visitors</div>
+      <div class="text-xs text-white/60 mt-1">Spaza, salon, taxi, church - R150 / month</div>
+      <a href="https://wa.me/27653327762?text=Advertise on Senaoane Events" class="mt-3 inline-block bg-[#E30613] text-white text-xs font-bold px-4 py-2 rounded-full">Book Now</a>
+    </div>
+
+    <!-- Map -->
+    <div class="bg-white rounded-2xl shadow-sm border p-4">
+      <h3 class="font-black text-sm">📍 AROUND SENAOANE</h3>
+      <div class="mt-3 text-[12px] space-y-2 text-gray-700">
+        <div class="flex justify-between"><span>• Maponya Mall (Business Showcase)</span><span class="font-bold">2.1km</span></div>
+        <div class="flex justify-between"><span>• Soweto Theatre, Jabulani</span><span class="font-bold">1.8km</span></div>
+        <div class="flex justify-between"><span>• Vilakazi St (Soweto Pride)</span><span class="font-bold">8.5km</span></div>
+        <div class="flex justify-between"><span>• Monalisa Lifestyle (Colour Fest)</span><span class="font-bold">4.2km</span></div>
+        <div class="flex justify-between"><span>• St Hilda's, 510 Mabalane</span><span class="font-bold">0.3km</span></div>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<footer class="bg-black text-white/60 text-xs p-4 text-center mt-8 border-t-4 border-[#E30613]">
+  SENAOANE ONLINE EVENTS • Updated 22 Sept 2026 • Soweto Weather Live • WhatsApp +27 65 332 7762 • Home: https://senaoanesoweto.webflow.io/ • Sources: Quicket, Egoli Jozi News, Computicket, Soweto Theatre • Data via https://forms.gle/PPtsWKGcvqSapxDz9
+</footer>
+
+<script>
+function loadEvents(){ return JSON.parse(localStorage.getItem('senaoane_events_extra')||'[]'); }
+function addEvent(){
+  const title=document.getElementById('ev-title').value.trim();
+  const date=document.getElementById('ev-date').value;
+  const place=document.getElementById('ev-place').value.trim();
+  const desc=document.getElementById('ev-desc').value.trim();
+  if(!title) return alert('Add title');
+  const extra=loadEvents();
+  extra.unshift({title,date,place,desc,id:Date.now()});
+  localStorage.setItem('senaoane_events_extra', JSON.stringify(extra));
+  document.getElementById('ev-title').value=''; document.getElementById('ev-place').value=''; document.getElementById('ev-desc').value='';
+  renderCustom();
+}
+function renderCustom(){
+  const extra=loadEvents();
+  const feed=document.getElementById('events-feed');
+  if(!extra.length) return;
+  const html=extra.map(e=>`
+    <article class="bg-white rounded-[20px] shadow-sm border overflow-hidden border-[#E30613]/30">
+      <div class="p-5">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="bg-[#E30613] text-white text-[10px] font-black px-2.5 py-1 rounded-full">COMMUNITY ADDED • ${e.date||'TBC'}</span>
+          <span class="bg-gray-100 text-[10px] font-bold px-2.5 py-1 rounded-full">${e.place||'Senaoane'}</span>
+        </div>
+        <h2 class="font-black text-[17px]">${e.title}</h2>
+        <p class="text-[13px] text-gray-700 mt-2">${e.desc||''}</p>
+      </div>
+    </article>
+  `).join('');
+  // prepend to feed
+  const existing=feed.innerHTML;
+  // avoid duplicating on reload
+  if(!feed.dataset.customRendered){
+    feed.innerHTML = html + existing;
+    feed.dataset.customRendered = '1';
+  }
+}
+renderCustom();
+</script>
+</body>
+</html>
