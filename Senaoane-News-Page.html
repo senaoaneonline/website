@@ -214,54 +214,25 @@ function loadComments(){ return JSON.parse(localStorage.getItem('senaoane_news_c
 function saveComments(c){ localStorage.setItem('senaoane_news_comments', JSON.stringify(c)); }
 function loadStories(){ return JSON.parse(localStorage.getItem('senaoane_news_extra')||'[]'); }
 
-function shareSundayGames(){
-  const message = `🔥 SENAOANE SECONDARY SUNDAY GAMES\n\nSenaoane Secondary Sunday Games time 11:00 first game till 5:00,Family is out day Vendors welcomed at a smola nyana fee.Come chill out man.\n\n📍 Senaoane Secondary School, 1105 Senaoane St\n🕒 Sunday 5 Oct • 11:00 till 17:00\n👨‍👩‍👧‍👦 Family out day – soccer, netball, athletics\n🛍️ Vendors welcome – smola nyana fee – contact SGB\n\nCome chill out man! 🔥\n\nMore Soweto news: https://senaoanesoweto.webflow.io/`;
-  const waUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-  window.open(waUrl, '_blank');
-}
+
 function shareStoryWhatsApp(id){
   const allStories = [...loadStories(), ...initialNews];
   const story = allStories.find(s => s.id === id);
   if(!story) return;
-  const cleanBody = story.body.replace(/<[^>]*>/g,'').slice(0,300);
-  const msg = `*${story.title}*\n\n${cleanBody}\n\nSenaoane Secondary Sunday Games time 11:00 first game till 5:00,Family is out day Vendors welcomed at a smola nyana fee.Come chill out man.\n\nVia Senaoane News – https://senaoanesoweto.webflow.io/`;
+  const cleanBody = story.body.replace(/<[^>]*>/g,'').slice(0,200);
+  const msg = `*${story.title}*\n\n${cleanBody}\n\nSenaoane Secondary Sunday Games time 11:00 first game till 5:00,Family is out day Vendors welcomed at a smola nyana fee.Come chill out man.\n\nVia Senaoane News`;
   window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
-function render(){
-  const feed = document.getElementById('news-feed');
-  const comments = loadComments();
-  const extra = loadStories();
-  const all = [...extra, ...initialNews];
-  feed.innerHTML = all.map(n=>`
-    <article class="bg-white rounded-2xl shadow-sm overflow-hidden border">
-      <div class="flex gap-3 p-4">
-        <img src="${n.image||''}" class="w-20 h-20 rounded-xl object-cover bg-gray-100">
-        <div class="flex-1">
-          <div class="text-[10px] font-bold text-[#E30613]">${n.category}</div>
-          <h2 class="font-black text-[17px] leading-tight mt-1">${n.title}</h2>
-          <div class="text-[11px] text-gray-500 mt-1">${n.author}</div>
-        </div>
-      </div>
-      <div class="px-4 pb-3 text-[14px] leading-relaxed text-gray-700">${n.body}</div>
-      <div class="px-4 pb-2 flex gap-2 flex-wrap">
-        <button onclick="like(${n.id})" class="text-xs bg-gray-100 px-3 py-1 rounded-full">❤️ Like <span id="like-${n.id}">0</span></button>
-        <button onclick="shareStoryWhatsApp(${n.id})" class="text-xs bg-[#25D366] text-white px-3 py-1 rounded-full font-bold">📢 Share to your WhatsApp friends and family.</button>
-        <span class="text-xs text-gray-500 py-1">${(comments[n.id]||[]).length} comments</span>
-      </div>
-      <div class="bg-gray-50 px-4 py-3 border-t">
-        <div id="comments-${n.id}" class="space-y-2 mb-3">
-          ${(comments[n.id]||[]).map(c=>`<div class="bg-white p-2 rounded-xl text-sm border"><b class="text-[11px]">${c.name}</b><div>${c.text}</div><div class="text-[10px] text-gray-400">${c.time}</div></div>`).join('')}
-        </div>
-        <div class="flex gap-2">
-          <input id="name-${n.id}" placeholder="Your name" class="w-24 text-xs p-2 rounded-xl border">
-          <input id="input-${n.id}" placeholder="Say something..." class="flex-1 text-sm p-2 rounded-xl border">
-          <button onclick="postComment(${n.id})" class="bg-black text-white text-xs px-4 rounded-xl font-bold">Post</button>
-        </div>
-      </div>
-    </article>
-  `).join('');
+function shareSundayGames(){
+  const message = `Senaoane Secondary Sunday Games time 11:00 first game till 5:00,Family is out day Vendors welcomed at a smola nyana fee.Come chill out man.
+
+📍 Senaoane Secondary School, 1105 Senaoane St
+🕒 Sunday 5 Oct • 11:00 till 17:00`;
+  const waUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+  window.open(waUrl, '_blank');
 }
+
 function postComment(id){
   const input = document.getElementById('input-'+id);
   const nameInput = document.getElementById('name-'+id);
@@ -293,7 +264,9 @@ render();
 </script>
 
 <footer class="bg-black text-white/60 text-xs p-4 text-center mt-8 border-t-4 border-[#E30613]">
-  SENAOANE FRIDAY EDITION • 3 OCT 2026 • Weekend: Supa Store RUN Sat 7am【2872864815798490594†L5-L8】, KSM Sat 12pm【2872864815798490594†L5-L8】, Cheese & Wine Sun 12pm Soweto Theatre【2872864815798490594†L21-L24】, Bafana vs Egypt Sun 20:00【7596429793692360400†L5-L7】, PSL pause【1595100394056078369†L5-L7】 • SUNDAY REMINDER: Senaoane Secondary Games 09:00 1105 Senaoane St • No ANC • WhatsApp +27 65 332 7762
+  SENAOANE FRIDAY EDITION • 3 OCT 2026 • Weekend: Supa Store RUN Sat 7am, KSM Sat 12pm, Cheese & Wine Sun 12pm Soweto Theatre, Bafana vs Egypt Sun 20:00, PSL pause • SUNDAY REMINDER: Senaoane Secondary Games 09:00 1105 Senaoane St<br><br>
+  email Senaoane Community Website at senaoaneonline1@gmail.com<br>
+  © Senaoane Community Website, a project of Cija Business Solutions. Honoring Legacy, Empowering the Future of Senaoane.
 </footer>
 </body>
 </html>
