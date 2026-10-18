@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="View upcoming local funeral notices saved on this device for Senaoane and Soweto.">
+  <title>Upcoming Local Funerals | Senaoane Online</title>
+  <style>
+    :root { color-scheme: light; --red:#e30613; --ink:#171717; --muted:#626262; --paper:#f5f6f8; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif; }
+    main { width:min(900px,100% - 32px); margin:0 auto; padding:42px 0 72px; }
+    .eyebrow { color:var(--red); font-size:.8rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+    h1 { margin:.3rem 0 .55rem; font-size:clamp(2rem,6vw,3rem); line-height:1.08; letter-spacing:-.04em; }
+    .intro { max-width:680px; color:#4c4c4c; margin:0 0 24px; }
+    .notice { display:flex; gap:12px; align-items:flex-start; padding:15px 17px; border:1px solid #ead79a; border-radius:14px; background:#fff8df; color:#47380a; font-size:.93rem; }
+    .notice strong { display:block; }
+    .toolbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin:26px 0 14px; }
+    .toolbar h2 { margin:0; font-size:1.2rem; }
+    .actions { display:flex; flex-wrap:wrap; gap:9px; }
+    .button { display:inline-flex; justify-content:center; align-items:center; min-height:42px; padding:10px 16px; border:1px solid transparent; border-radius:999px; background:var(--red); color:white; font-weight:750; text-decoration:none; cursor:pointer; }
+    .button.secondary { border-color:#d2d2d2; background:white; color:var(--ink); }
+    .button:focus-visible { outline:3px solid #222; outline-offset:3px; }
+    #count { color:var(--muted); font-size:.9rem; margin:0 0 12px; }
+    .cards { display:grid; gap:14px; }
+    .card { padding:19px; border:1px solid #e4e5e8; border-left:5px solid var(--red); border-radius:15px; background:white; box-shadow:0 4px 18px #11111108; }
+    .card h3 { margin:0 0 9px; font-size:1.2rem; line-height:1.25; }
+    .meta { display:flex; flex-wrap:wrap; gap:8px 18px; color:#383838; font-weight:650; }
+    .venue,.notes { margin:.55rem 0 0; color:#555; overflow-wrap:anywhere; }
+    .empty { padding:26px 20px; border:1px dashed #c7c7ca; border-radius:15px; background:#fff; text-align:center; }
+    .empty h2 { margin:0 0 5px; }
+    .empty p { margin:0 0 15px; color:var(--muted); }
+    footer { margin-top:28px; color:#696969; font-size:.84rem; }
+    @media (max-width:560px) { main { padding-top:28px; } .toolbar { align-items:flex-start; flex-direction:column; } .button { flex:1; } }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Senaoane · Soweto</p>
+    <h1>Upcoming local funerals</h1>
+    <p class="intro">A respectful place to view funeral notices saved from this browser.</p>
+
+    <aside class="notice" aria-label="Important information">
+      <span aria-hidden="true">ⓘ</span>
+      <div><strong>These notices are stored on this device only.</strong> Submitting a notice does not publish it for other visitors. Contact the family or community administrator directly for confirmation before travelling.</div>
+    </aside>
+
+    <div class="toolbar">
+      <h2>Notices coming up</h2>
+      <div class="actions">
+        <button class="button secondary" id="refresh" type="button">Refresh list</button>
+        <a class="button" href="https://senaoaneonline.github.io/submissions/Funeral-Submission.html">Submit a funeral notice</a>
+      </div>
+    </div>
+    <p id="count" aria-live="polite"></p>
+    <section id="notices" class="cards" aria-label="Upcoming funeral notices"></section>
+
+    <footer>Personal contact numbers are not shown on this page. Notice details are read from the <code>senaoane_funerals</code> list saved in your browser.</footer>
+  </main>
+  <script src="./site-nav.js?v=20261018-funeral-links"></script>
+  <script>
+    (() => {
+      const KEY = 'senaoane_funerals';
+      const list = document.getElementById('notices');
+      const count = document.getElementById('count');
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const dateValue = value => {
+        if (!value) return null;
+        const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(value));
+        if (!match) return null;
+        const d = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
+        return Number.isNaN(d.getTime()) ? null : d;
+      };
+      const formatDate = value => {
+        const d = dateValue(value);
+        return d ? new Intl.DateTimeFormat('en-ZA', { day:'numeric', month:'long', year:'numeric' }).format(d) : 'Date to be confirmed';
+      };
+      const safeText = value => String(value || '').trim();
+      function render() {
+        list.replaceChildren();
+        let records = [];
+        try {
+          const saved = JSON.parse(localStorage.getItem(KEY) || '[]');
+          if (Array.isArray(saved)) records = saved.filter(item => item && typeof item === 'object');
+        } catch (_) { records = []; }
+        const upcoming = records
+          .filter(item => { const d = dateValue(item.date); return !d || d >= today; })
+          .sort((a,b) => {
+            const da = dateValue(a.date), db = dateValue(b.date);
+            if (!da && !db) return 0;
+            if (!da) return 1;
+            if (!db) return -1;
+            return da - db;
+          });
+        count.textContent = `${upcoming.length} upcoming ${upcoming.length === 1 ? 'notice' : 'notices'} saved in this browser`;
+        if (!upcoming.length) {
+          const empty = document.createElement('div');
+          empty.className = 'empty';
+          const heading = document.createElement('h2'); heading.textContent = 'No upcoming notices saved here yet';
+          const text = document.createElement('p'); text.textContent = 'Submit a notice from this browser and it will appear in this list.';
+          const link = document.createElement('a'); link.className = 'button'; link.href = 'https://senaoaneonline.github.io/submissions/Funeral-Submission.html'; link.textContent = 'Submit a funeral notice';
+          empty.append(heading, text, link); list.append(empty); return;
+        }
+        for (const item of upcoming) {
+          const card = document.createElement('article'); card.className = 'card';
+          const heading = document.createElement('h3'); heading.textContent = safeText(item.deceased) || 'Funeral notice';
+          const meta = document.createElement('div'); meta.className = 'meta';
+          const date = document.createElement('span'); date.textContent = `Date: ${formatDate(item.date)}`; meta.append(date);
+          if (safeText(item.time)) { const time = document.createElement('span'); time.textContent = `Time: ${safeText(item.time)}`; meta.append(time); }
+          card.append(heading, meta);
+          if (safeText(item.address)) { const venue = document.createElement('p'); venue.className = 'venue'; venue.textContent = `Place: ${safeText(item.address)}`; card.append(venue); }
+          if (safeText(item.notes)) { const notes = document.createElement('p'); notes.className = 'notes'; notes.textContent = safeText(item.notes); card.append(notes); }
+          list.append(card);
+        }
+      }
+      document.getElementById('refresh').addEventListener('click', render);
+      window.addEventListener('storage', event => { if (event.key === KEY) render(); });
+      render();
+    })();
+  </script>
+</body>
+</html>

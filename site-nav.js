@@ -9,7 +9,9 @@
     ['Community', 'Senaoane-Community-Hub-Events-Jobs-Tips.html'],
     ['Resources', 'Senaoane-Resource-Hub.html'],
     ['Forum', 'forum.html'],
-    ['Business', 'senaoane-business-bizzybee2.html']
+    ['Business', 'senaoane-business-bizzybee2.html'],
+    ['Submit Funeral Notice', 'https://senaoaneonline.github.io/submissions/Funeral-Submission.html'],
+    ['Upcoming Funerals', 'Upcoming-Funerals.html']
   ];
 
   const style = document.createElement('style');
