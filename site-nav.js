@@ -51,7 +51,7 @@
   links.forEach(([label, href]) => {
     const link = document.createElement('a');
     link.textContent = label;
-    link.href = `./${href}`;
+    link.href = /^https?:\/\//i.test(href) ? href : `./${href}`;
     if (currentFile.toLowerCase() === href.toLowerCase()) link.setAttribute('aria-current', 'page');
     menu.appendChild(link);
   });

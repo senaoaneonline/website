@@ -1,35 +1,52 @@
-<!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Forum - Senaoane Community</title><link rel="stylesheet" href="css/style.css"></head>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Senaoane community forum for local announcements, events, jobs, sports and news.">
+  <title>Forum - Senaoane Community</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
 <body>
-<div class="top-red"></div>
-<div class="nav">
-  <a href="https://senaoanesoweto.webflow.io/" class="logo"><b>SENAOANE FORUM</b></a>
-  <div style="display:flex;gap:8px">
-    <a href="upload.html" class="btn btn-red">+ New Post</a>
-    <a href="https://wa.me/27765269828" class="btn btn-green">WhatsApp</a>
-  </div>
-</div>
+  <div class="top-red"></div>
+  <header class="nav">
+    <a href="https://senaoanesoweto.webflow.io/" class="logo"><b>SENAOANE FORUM</b></a>
+    <div class="nav-actions">
+      <a href="register.html" class="btn btn-outline">Create profile</a>
+      <a href="upload.html" class="btn btn-red">+ New post</a>
+      <a href="https://wa.me/27765269828" class="btn btn-green">WhatsApp</a>
+    </div>
+  </header>
 
-<div style="max-width:1200px;margin:auto;padding:16px">
-  <div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap">
-    <button class="btn btn-dark" onclick="renderPosts('forum-feed')">All</button>
-    <button class="btn btn-dark" onclick="renderPosts('forum-feed','SPORTS')">Sports</button>
-    <button class="btn btn-dark" onclick="renderPosts('forum-feed','COMMUNITY')">Meetings</button>
-    <button class="btn btn-dark" onclick="renderPosts('forum-feed','JOBS')">Jobs</button>
-    <button class="btn btn-dark" onclick="renderPosts('forum-feed','EVENTS')">Events</button>
-    <button class="btn btn-dark" onclick="renderPosts('forum-feed','NEWS')">News</button>
-  </div>
-  <div id="forum-feed" class="grid"></div>
-</div>
+  <main class="page-shell">
+    <div class="forum-header">
+      <div>
+        <h1 class="page-heading">Senaoane Community Forum</h1>
+        <p class="page-intro">Share a local announcement, ask a question, or join a community discussion.</p>
+      </div>
+      <a href="upload.html" class="btn btn-red">Start a post</a>
+    </div>
 
-<script src="js/app.js"></script>
-<script>
-fetch('data/posts.json').then(r=>r.json()).then(sample=>{
-  const existing = JSON.parse(localStorage.getItem('senaoane_posts')||'[]');
-  if(existing.length===0) localStorage.setItem('senaoane_posts', JSON.stringify(sample));
-  renderPosts('forum-feed');
-});
-</script>
-<script defer src="./site-nav.js?v=20261018"></script>
-</body></html>
+    <p class="local-notice"><strong>Local mode:</strong> profiles, posts, replies and images are saved in this browser only. Other visitors will not see them until a shared database is connected.</p>
+
+    <section aria-label="Forum posts">
+      <div class="filter-bar" aria-label="Filter posts by category">
+        <button class="btn btn-outline" type="button" data-filter="ALL" aria-pressed="true" onclick="renderPosts('forum-feed','ALL')">All</button>
+        <button class="btn btn-outline" type="button" data-filter="GENERAL" aria-pressed="false" onclick="renderPosts('forum-feed','GENERAL')">General</button>
+        <button class="btn btn-outline" type="button" data-filter="SPORTS" aria-pressed="false" onclick="renderPosts('forum-feed','SPORTS')">Sports</button>
+        <button class="btn btn-outline" type="button" data-filter="COMMUNITY" aria-pressed="false" onclick="renderPosts('forum-feed','COMMUNITY')">Meetings</button>
+        <button class="btn btn-outline" type="button" data-filter="JOBS" aria-pressed="false" onclick="renderPosts('forum-feed','JOBS')">Jobs</button>
+        <button class="btn btn-outline" type="button" data-filter="EVENTS" aria-pressed="false" onclick="renderPosts('forum-feed','EVENTS')">Events</button>
+        <button class="btn btn-outline" type="button" data-filter="NEWS" aria-pressed="false" onclick="renderPosts('forum-feed','NEWS')">News</button>
+      </div>
+      <div class="feed-meta"><span>Recent community posts</span><span id="post-count" aria-live="polite">Loading…</span></div>
+      <div id="forum-message" class="form-message" role="status" aria-live="polite" hidden></div>
+      <div id="forum-feed" class="grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+  <script>renderPosts('forum-feed', 'ALL');</script>
+  <script defer src="./site-nav.js?v=20261018-forum-fix"></script>
+</body>
+</html>

@@ -1,76 +1,193 @@
-<!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Upload - Senaoane</title><link rel="stylesheet" href="css/style.css"></head>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create a local Senaoane community forum post with optional image or YouTube video.">
+  <title>Create a Forum Post - Senaoane</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
 <body>
-<div class="top-red"></div>
-<div class="nav"><a href="https://senaoanesoweto.webflow.io/" class="logo"><b>← SENAOANE</b></a><span id="userBadge"></span></div>
+  <div class="top-red"></div>
+  <header class="nav">
+    <a href="https://senaoanesoweto.webflow.io/" class="logo"><b>← SENAOANE</b></a>
+    <div class="nav-actions">
+      <span id="userBadge"></span>
+      <button id="logoutButton" class="btn btn-outline" type="button" hidden>Sign out</button>
+      <a href="forum.html" class="btn btn-dark">View forum</a>
+    </div>
+  </header>
 
-<div style="max-width:800px;margin:20px auto;padding:0 16px">
-<div class="card">
-<h1>Upload Video (YouTube) & Images to Community Forum</h1>
-<p style="opacity:0.7">Your video stays on original YouTube page, but streamed from our community page. Registration required.</p>
+  <main class="page-shell">
+    <section class="card">
+      <h1 class="page-heading">Create a Forum Post</h1>
+      <p class="page-intro">Post a local announcement, question, job, event, news item, or sports update. Text-only posts are welcome; media is optional.</p>
+      <p class="local-notice"><strong>Local mode:</strong> posts are saved in this browser only and are not shared with other visitors yet.</p>
 
-<form id="uploadForm" style="margin-top:16px">
-<label>Category</label>
-<select class="input" name="category" required>
-<option value="GENERAL">General</option><option value="SPORTS">Sports Announcements</option><option value="COMMUNITY">Community Meetings</option><option value="JOBS">Jobs Announcements</option><option value="EVENTS">Events Announcements</option><option value="NEWS">News Announcements</option>
-</select>
+      <div id="uploadMessage" class="form-message" role="status" aria-live="polite" hidden></div>
+      <form id="uploadForm" class="form-stack">
+        <div class="form-field">
+          <label for="category">Category</label>
+          <select class="input" id="category" name="category" required>
+            <option value="GENERAL">General</option>
+            <option value="SPORTS">Sports</option>
+            <option value="COMMUNITY">Community meetings</option>
+            <option value="JOBS">Jobs</option>
+            <option value="EVENTS">Events</option>
+            <option value="NEWS">News</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="title">Title</label>
+          <input class="input" id="title" name="title" placeholder="e.g. Elkah Stadium match highlights" required maxlength="120">
+        </div>
+        <div class="form-field">
+          <label for="description">Message</label>
+          <textarea class="input" id="description" name="description" rows="4" maxlength="3000" placeholder="Add the details people need to know."></textarea>
+        </div>
+        <div class="form-field">
+          <label for="youtube_url">YouTube video link (optional)</label>
+          <input class="input" id="youtube_url" name="youtube_url" type="url" inputmode="url" placeholder="https://www.youtube.com/watch?v=…">
+          <p class="field-help">YouTube watch, youtu.be, Shorts, and embed links are supported.</p>
+        </div>
+        <div class="form-field">
+          <label for="imageFile">Image (optional)</label>
+          <input class="input" type="file" id="imageFile" accept="image/*">
+          <p class="field-help">Images are resized before saving in this browser.</p>
+        </div>
+        <div id="preview" aria-live="polite"></div>
+        <button class="btn btn-red" type="submit">Publish post</button>
+      </form>
+    </section>
 
-<label>Title</label>
-<input class="input" name="title" placeholder="e.g. Elkah Stadium Match Highlights" required>
+    <section style="margin-top:28px" aria-labelledby="myPostsHeading">
+      <h2 id="myPostsHeading">Your posts in this browser</h2>
+      <div id="myPosts" class="grid"></div>
+    </section>
+  </main>
 
-<label>Description</label>
-<textarea class="input" name="description" rows="3" placeholder="What is this about?"></textarea>
+  <script src="js/app.js"></script>
+  <script>
+    const user = requireAuth();
+    const form = document.getElementById('uploadForm');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const imageInput = document.getElementById('imageFile');
+    const preview = document.getElementById('preview');
+    const logoutButton = document.getElementById('logoutButton');
+    window.uploadedImageData = '';
 
-<label>Original YouTube Link (Video will be streamed from community page)</label>
-<input class="input" name="youtube_url" placeholder="https://www.youtube.com/watch?v=..." >
+    if (user) {
+      document.getElementById('userBadge').textContent = `Profile: ${user.full_name}`;
+      logoutButton.hidden = false;
+      logoutButton.addEventListener('click', () => {
+        DB.logout();
+        window.location.href = 'forum.html';
+      });
+      renderPosts('myPosts', 'ALL', user.id);
+    } else {
+      form.hidden = true;
+    }
 
-<label>Or Upload Image</label>
-<input class="input" type="file" id="imageFile" accept="image/*">
+    function fileAsDataUrl(blob) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result || ''));
+        reader.onerror = () => reject(new Error('Could not read the selected image.'));
+        reader.readAsDataURL(blob);
+      });
+    }
 
-<div id="preview" style="margin:12px 0"></div>
+    function loadImage(file) {
+      return new Promise((resolve, reject) => {
+        const objectUrl = URL.createObjectURL(file);
+        const image = new Image();
+        image.onload = () => {
+          URL.revokeObjectURL(objectUrl);
+          resolve(image);
+        };
+        image.onerror = () => {
+          URL.revokeObjectURL(objectUrl);
+          reject(new Error('That image could not be opened.'));
+        };
+        image.src = objectUrl;
+      });
+    }
 
-<button class="btn btn-red" type="submit" style="width:100%">Publish to Community Forum</button>
-</form>
-</div>
+    async function compressImage(file) {
+      if (!file.type || !file.type.startsWith('image/')) throw new Error('Choose an image file.');
+      if (file.size > 15 * 1024 * 1024) throw new Error('Choose an image smaller than 15 MB.');
+      const image = await loadImage(file);
+      const scale = Math.min(1, 1600 / image.naturalWidth, 1600 / image.naturalHeight);
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
+      canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
+      const context = canvas.getContext('2d');
+      if (!context) throw new Error('Image resizing is unavailable in this browser.');
+      context.fillStyle = '#ffffff';
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-<div id="myPosts" class="grid" style="margin-top:24px"></div>
-</div>
+      let blob = null;
+      for (const quality of [0.82, 0.72, 0.62, 0.52, 0.42]) {
+        blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', quality));
+        if (!blob) throw new Error('Could not resize the selected image.');
+        if (blob.size <= 800 * 1024) break;
+      }
+      if (blob.size > 1200 * 1024) throw new Error('This image is too large to store in this browser. Choose a smaller image.');
+      return fileAsDataUrl(blob);
+    }
 
-<script src="js/app.js"></script>
-<script>
-const user = requireAuth();
-if(user) document.getElementById('userBadge').textContent = 'Hi, '+user.full_name+' | WhatsApp: 0765269828';
+    imageInput.addEventListener('change', async event => {
+      const file = event.target.files && event.target.files[0];
+      window.uploadedImageData = '';
+      preview.replaceChildren();
+      if (!file) return;
+      showForumMessage('uploadMessage', 'Preparing your image…');
+      try {
+        window.uploadedImageData = await compressImage(file);
+        const image = document.createElement('img');
+        image.src = window.uploadedImageData;
+        image.alt = 'Selected image preview';
+        preview.appendChild(image);
+        showForumMessage('uploadMessage', 'Image ready to publish.');
+      } catch (error) {
+        imageInput.value = '';
+        showForumMessage('uploadMessage', error.message || 'Could not prepare this image.', 'error');
+      }
+    });
 
-document.getElementById('imageFile').addEventListener('change', e=>{
- const file = e.target.files[0];
- if(!file) return;
- const reader = new FileReader();
- reader.onload = ev=>{
-   window.uploadedImageData = ev.target.result;
-   document.getElementById('preview').innerHTML = `<img src="${ev.target.result}" style="max-width:100%;border-radius:8px">`;
- };
- reader.readAsDataURL(file);
-});
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (!user) return;
+      const data = Object.fromEntries(new FormData(form).entries());
+      const youtubeUrl = String(data.youtube_url || '').trim();
+      const youtubeId = extractYouTubeID(youtubeUrl);
+      if (youtubeUrl && !youtubeId) {
+        showForumMessage('uploadMessage', 'Enter a valid YouTube watch, youtu.be, Shorts, or embed link.', 'error');
+        return;
+      }
 
-document.getElementById('uploadForm').addEventListener('submit', e=>{
- e.preventDefault();
- const fd = new FormData(e.target);
- const data = Object.fromEntries(fd.entries());
- data.youtube_id = extractYouTubeID(data.youtube_url);
- data.user_name = user.full_name;
- data.image_data = window.uploadedImageData || '';
- if(!data.youtube_id && !data.image_data){alert('Please add a YouTube link or an image'); return;}
- DB.savePost(data);
- // Production: await supabase.from('posts').insert({...data, image_url: uploadedCloudinaryUrl})
- alert('Published! Check forum.');
- renderPosts('myPosts');
- e.target.reset();
- document.getElementById('preview').innerHTML='';
- window.uploadedImageData='';
-});
-
-renderPosts('myPosts');
-</script>
-<script defer src="./site-nav.js?v=20261018"></script>
-</body></html>
+      submitButton.disabled = true;
+      try {
+        await DB.savePost({
+          category: data.category,
+          title: data.title,
+          description: data.description,
+          youtube_id: youtubeId,
+          image_data: window.uploadedImageData || ''
+        });
+        form.reset();
+        preview.replaceChildren();
+        window.uploadedImageData = '';
+        showForumMessage('uploadMessage', 'Post saved in this browser. Open the forum to view it.');
+        await renderPosts('myPosts', 'ALL', user.id);
+      } catch (error) {
+        showForumMessage('uploadMessage', error.message || 'Could not save your post. Please try again.', 'error');
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  </script>
+  <script defer src="./site-nav.js?v=20261018-forum-fix"></script>
+</body>
+</html>
