@@ -2,7 +2,7 @@
   if (document.getElementById('senaoane-site-nav')) return;
 
   const links = [
-    ['Home', 'index.html'],
+    ['Home', 'https://senaoanesoweto.webflow.io/'],
     ['News', 'Senaoane-News-Page.html'],
     ['Notice Board', 'Senaoane-Notice-Board.html'],
     ['Events', 'Senaoane-Events-Page.html'],
@@ -41,7 +41,7 @@
   nav.id = 'senaoane-site-nav';
   nav.innerHTML = `
     <div class="sna-inner">
-      <a class="sna-brand" href="./index.html" aria-label="Senaoane Online home"><span class="sna-mark">SN</span><span>SENAOANE ONLINE</span></a>
+      <a class="sna-brand" href="https://senaoanesoweto.webflow.io/" aria-label="Senaoane Online home"><span class="sna-mark">SN</span><span>SENAOANE ONLINE</span></a>
       <button class="sna-toggle" type="button" aria-expanded="false" aria-controls="sna-navigation"><span aria-hidden="true">☰</span><span>Menu</span></button>
       <nav class="sna-links" id="sna-navigation" aria-label="Main navigation"></nav>
     </div>`;
