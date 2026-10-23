@@ -1,185 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Senaoane Events - Updated 25 Sept 2026 TODAY</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
-<style>body{font-family:'Inter',sans-serif}</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Senaoane and Soweto weekend guide: confirmed Soweto Theatre events, family outings, local activities, weekend weather and community adverts.">
+  <title>Senaoane Weekend Events | Soweto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--red:#e30613;--black:#080808;--ink:#171717;--muted:#676767;--paper:#f4f4f6;--line:#e8e8eb;--green:#168548}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif}
+    a{color:inherit}
+    .topline{height:5px;background:var(--red)}
+    header{position:sticky;top:0;z-index:10;background:var(--black);color:#fff;box-shadow:0 5px 18px #0002}
+    .head-inner{max-width:1240px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;min-width:210px}
+    .brand-mark{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--red);font-weight:900;font-size:12px;letter-spacing:-1px}
+    .brand-name{font-size:13px;font-weight:900;letter-spacing:.08em;line-height:1.1}
+    .brand-name,.brand-area{display:block}
+    .brand-area{font-size:10px;color:#bcbcbc;margin-top:4px}
+    .nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:999px;padding:9px 13px;font-size:11px;font-weight:800;text-decoration:none;border:1px solid transparent;transition:.15s ease}
+    .pill:hover{transform:translateY(-1px);filter:brightness(.96)}
+    .pill-white{background:#fff;color:#111}
+    .pill-red{background:var(--red);color:#fff}
+    .pill-green{background:#128544;color:#fff}
+    .pill-dark{background:#111;color:#fff}
+    .pill-outline{background:#fff;color:#181818;border-color:#dedee3}
+    .ticker{background:var(--red);color:#fff;font-size:11px;font-weight:800;letter-spacing:.02em;padding:9px 16px;text-align:center}
+    .wrap{max-width:1240px;margin:auto;padding:18px}
+    .hero{position:relative;display:grid;grid-template-columns:1.2fr .8fr;overflow:hidden;background:var(--black);color:#fff;border-radius:22px;min-height:265px;box-shadow:0 12px 28px #0001}
+    .hero-copy{padding:28px 30px;align-self:center;position:relative;z-index:1}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#ffffff15;border:1px solid #ffffff20;border-radius:999px;padding:7px 11px;color:#fff;font-size:10px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+    .eyebrow i{width:7px;height:7px;border-radius:50%;background:#ff4550;display:inline-block}
+    h1{font-size:clamp(28px,4vw,44px);line-height:1.03;letter-spacing:-.045em;margin:17px 0 10px;font-weight:900}
+    .hero-copy p{max-width:600px;color:#d3d3d3;font-size:13px;line-height:1.65;margin:0}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+    .hero-photo{position:relative;min-height:265px;background:#181818}
+    .hero-photo img{width:100%;height:100%;min-height:265px;object-fit:cover;display:block;opacity:.78}
+    .hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#080808 0%,transparent 65%)}
+    .hero-credit{position:absolute;z-index:1;right:10px;bottom:8px;color:#fff;background:#0009;padding:4px 7px;border-radius:5px;font-size:9px}
+    .hero-credit a{color:#fff}
+    .layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(290px,.8fr);gap:16px;margin-top:16px;align-items:start}
+    .stack{display:grid;gap:16px;min-width:0}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:2px 2px 10px}
+    .section-head h2{margin:0;font-size:19px;line-height:1.15;font-weight:900;letter-spacing:-.03em}
+    .section-head p{margin:5px 0 0;color:var(--muted);font-size:11px;line-height:1.5}
+    .section-tag{white-space:nowrap;font-size:9px;font-weight:900;letter-spacing:.08em;color:var(--red);background:#ffe7e9;padding:7px 9px;border-radius:999px;text-transform:uppercase}
+    .event-list{display:grid;gap:10px}
+    .event{background:#fff;border:1px solid var(--line);border-radius:17px;padding:16px;box-shadow:0 3px 10px #00000006}
+    .event.featured{display:grid;grid-template-columns:180px minmax(0,1fr);gap:15px;align-items:stretch}
+    .event-photo{width:100%;height:100%;min-height:150px;object-fit:cover;border-radius:12px;background:#eee}
+    .photo-credit{font-size:9px;color:#888;margin-top:5px}
+    .photo-credit a{color:#666}
+    .event-content{min-width:0}
+    .event-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+    .date-chip{display:inline-block;background:#ffe7e9;color:#b4000b;border-radius:999px;padding:6px 9px;font-size:9px;line-height:1.2;font-weight:900;letter-spacing:.055em;text-transform:uppercase}
+    .price{font-size:11px;font-weight:900;background:#f2f2f4;border-radius:9px;padding:6px 9px;white-space:nowrap}
+    .event h3{font-size:16px;line-height:1.25;margin:10px 0 5px;font-weight:900;letter-spacing:-.02em}
+    .event-meta{font-size:11px;color:#666;line-height:1.5}
+    .event-desc{font-size:12px;line-height:1.55;margin:9px 0 0;color:#343434}
+    .buttons{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+    .buttons .pill{font-size:10px;padding:8px 10px}
+    .small-note{font-size:10px;color:#777;line-height:1.5;margin-top:9px}
+    .outing-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .outing{overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:17px;box-shadow:0 3px 10px #00000006}
+    .outing img{display:block;width:100%;height:155px;object-fit:cover;background:#eee}
+    .outing-body{padding:14px}
+    .outing h3{font-size:15px;margin:7px 0 6px;font-weight:900;letter-spacing:-.02em}
+    .outing p{font-size:11px;line-height:1.55;color:#555;margin:0}
+    .outing .buttons{margin-top:10px}
+    .nightlife{background:#111;color:#fff;border-radius:17px;padding:16px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+    .nightlife h3{margin:0 0 5px;font-size:15px;font-weight:900}
+    .nightlife p{margin:0;color:#c7c7c7;font-size:11px;line-height:1.55}
+    .nightlife .buttons{margin-top:10px}
+    .side-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:16px;box-shadow:0 3px 10px #00000006}
+    .side-title{font-size:14px;margin:0;font-weight:900;letter-spacing:-.02em}
+    .weather-banner{margin-top:11px;background:linear-gradient(120deg,#111,#292929);color:#fff;padding:14px;border-radius:13px}
+    .weather-date{font-size:9px;text-transform:uppercase;letter-spacing:.11em;font-weight:900;color:#ffadb2}
+    .weather-banner h3{font-size:17px;margin:7px 0 5px;font-weight:900}
+    .weather-banner p{font-size:11px;line-height:1.55;color:#e3e3e3;margin:0}
+    .advice{margin-top:12px;background:#fff8e8;border:1px solid #f2e2b9;border-radius:12px;padding:11px;font-size:11px;line-height:1.55;color:#4d3d17}
+    .source-link{display:inline-block;margin-top:10px;font-size:10px;font-weight:800;color:#444;text-decoration:underline;text-underline-offset:2px}
+    .ads{display:grid;gap:10px;margin-top:12px}
+    .ad{border:1px solid var(--line);border-radius:13px;overflow:hidden;background:#fff}
+    .ad img{width:100%;height:140px;object-fit:cover;object-position:center 38%;display:block;background:#eee}
+    .ad-copy{padding:11px}
+    .ad-label{font-size:8px;color:var(--red);letter-spacing:.1em;font-weight:900;text-transform:uppercase}
+    .ad h3{font-size:13px;margin:5px 0 5px;font-weight:900}
+    .ad p{font-size:10px;line-height:1.5;color:#555;margin:0}
+    .ad .buttons{margin-top:9px}
+    .ad .buttons .pill{padding:7px 9px;font-size:9px}
+    .disclaimer{font-size:9px;color:#8a8a8a;line-height:1.5;margin-top:9px}
+    .submit{background:#fff;border:1px dashed #c9c9ce;border-radius:16px;padding:15px}
+    .submit h3{font-size:13px;margin:0 0 5px;font-weight:900}
+    .submit p{font-size:10px;line-height:1.5;color:#666;margin:0}
+    footer{margin-top:22px;padding:18px;background:#080808;color:#aaa;border-top:4px solid var(--red);text-align:center;font-size:10px;line-height:1.8}
+    footer a{color:#fff}
+    .footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:13px;margin-top:7px}
+    @media(max-width:900px){.layout{grid-template-columns:1fr}.hero{grid-template-columns:1fr .7fr}.hero-copy{padding:23px}}
+    @media(max-width:620px){.head-inner{padding:10px 12px}.brand{min-width:0}.brand-area{display:none}.nav .pill{font-size:9px;padding:8px 9px}.wrap{padding:12px}.hero{grid-template-columns:1fr;min-height:unset}.hero-copy{padding:21px}.hero-photo{min-height:145px;max-height:180px}.hero-photo img{min-height:145px;max-height:180px}.hero-photo:after{background:linear-gradient(0deg,#08080822,transparent)}.event.featured{grid-template-columns:1fr}.event-photo{height:170px;min-height:0}.outing-grid{grid-template-columns:1fr}.outing img{height:185px}.section-head{align-items:flex-start}.section-tag{font-size:8px}.nightlife{display:block}.nightlife .buttons{margin-top:12px}}
+  </style>
 </head>
-<body class="bg-[#f5f5f7]">
-<div class="h-[5px] bg-[#E30613]"></div>
-<header class="bg-black text-white flex items-center justify-between px-4 py-3 sticky top-0 z-50">
-  <div class="flex items-center gap-3">
-    <div class="w-8 h-8 bg-[#E30613] rounded-lg flex items-center justify-center font-black text-sm">SE</div>
-    <div><div class="font-black text-[13px]">SENAOANE EVENTS</div><div class="text-[10px] text-white/60">Senaoane • Phiri • Dlamini • Soweto</div></div>
+<body>
+  <div class="topline"></div>
+  <header>
+    <div class="head-inner">
+      <a class="brand" href="https://senaoanesoweto.webflow.io/" aria-label="Senaoane Online home">
+        <span class="brand-mark">SO</span>
+        <span><span class="brand-name">SENAOANE ONLINE</span><span class="brand-area">Senaoane • Phiri • Dlamini • Soweto</span></span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a class="pill pill-white" href="https://senaoanesoweto.webflow.io/">HOME</a>
+        <a class="pill pill-green" href="https://wa.me/27653327762?text=Hi%20Senaoane%20Online%2C%20please%20send%20me%20Soweto%20weekend%20event%20information." target="_blank" rel="noopener">WHATSAPP US</a>
+        <a class="pill pill-outline" href="mailto:senaoaneonline1@gmail.com?subject=Soweto%20event%20listing">EMAIL AN EVENT</a>
+      </nav>
+    </div>
+  </header>
+  <div class="ticker">WEEKEND GUIDE • FRIDAY 23 – SUNDAY 25 OCTOBER 2026 • LAST CHECKED 23 OCTOBER</div>
+
+  <div class="wrap">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <span class="eyebrow"><i></i> SENAOANE & AROUND SOWETO</span>
+        <h1 id="page-title">Make it a Soweto weekend.</h1>
+        <p>Confirmed theatre shows, family-friendly outdoor ideas, local business adverts and the weekend weather—all in one place. Ticket and venue details can change, so check with the organiser before travelling.</p>
+        <div class="hero-actions">
+          <a class="pill pill-red" href="#confirmed-events">SEE THIS WEEKEND’S EVENTS</a>
+          <a class="pill pill-white" href="#family-outdoors">FAMILY & OUTDOORS</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="events-assets/soweto-theatre.jpg" alt="Soweto Theatre exterior, architectural project photograph">
+        <span class="hero-credit">Photo: <a href="https://www.archdaily.com/243942/the-soweto-theatre-afritects" target="_blank" rel="noopener">Afritects via ArchDaily</a></span>
+      </div>
+    </section>
+
+    <div class="layout">
+      <main class="stack">
+        <section id="confirmed-events" aria-labelledby="events-heading">
+          <div class="section-head">
+            <div><h2 id="events-heading">Confirmed events</h2><p>Ticketed Soweto Theatre listings for Friday and Saturday.</p></div>
+            <span class="section-tag">3 listings</span>
+          </div>
+          <div class="event-list">
+            <article class="event featured">
+              <div>
+                <img class="event-photo" src="events-assets/soweto-theatre.jpg" alt="Soweto Theatre building in Jabulani">
+                <div class="photo-credit">Photo: <a href="https://www.archdaily.com/243942/the-soweto-theatre-afritects" target="_blank" rel="noopener">Afritects via ArchDaily</a></div>
+              </div>
+              <div class="event-content">
+                <div class="event-top"><span class="date-chip">Tonight • Fri 23 Oct • 19:30</span><span class="price">R200</span></div>
+                <h3>iSibane Soweto Tour</h3>
+                <div class="event-meta">Blue Theatre, Soweto Theatre • Jabulani</div>
+                <p class="event-desc">Liso the Musician brings “Worship Jazz” to a story-led live performance. Webtickets lists the show at R200.</p>
+                <div class="buttons">
+                  <a class="pill pill-red" href="https://www.webtickets.co.za/v2/event.aspx?itemid=1601293648" target="_blank" rel="noopener">BOOK TICKETS</a>
+                  <a class="pill pill-green" href="https://wa.me/27653327762?text=Hi%20Senaoane%20Online%2C%20I%20need%20information%20about%20iSibane%20at%20Soweto%20Theatre." target="_blank" rel="noopener">WHATSAPP EVENT INFO</a>
+                  <a class="pill pill-outline" href="tel:+27104461489">CALL TICKET SALES</a>
+                </div>
+                <div class="small-note">WhatsApp opens Senaoane Online. For ticket sales, call the theatre’s published ticket-sales line: 010 446 1489.</div>
+              </div>
+            </article>
+
+            <article class="event">
+              <div class="event-top"><span class="date-chip">Sat 24 Oct • 10:00–13:00</span><span class="price">R100</span></div>
+              <h3>Dancing Out of Cancer: 3 Hours of Movement, Hope & Celebration</h3>
+              <div class="event-meta">Soweto Theatre Forecourt • Jabulani</div>
+              <p class="event-desc">A community dance marathon with Amapiano, sepantsula, traditional dance and aerobics. The listing says no dance experience is needed; proceeds support a cancer patient’s treatment.</p>
+              <div class="buttons">
+                <a class="pill pill-red" href="https://www.webtickets.co.za/v2/event.aspx?itemid=1604107320" target="_blank" rel="noopener">BOOK TICKETS</a>
+                <a class="pill pill-green" href="https://wa.me/27653327762?text=Hi%20Senaoane%20Online%2C%20please%20help%20me%20with%20the%20Dancing%20Out%20of%20Cancer%20event%20at%20Soweto%20Theatre." target="_blank" rel="noopener">WHATSAPP EVENT INFO</a>
+                <a class="pill pill-outline" href="tel:+27104461489">CALL TICKET SALES</a>
+              </div>
+            </article>
+
+            <article class="event">
+              <div class="event-top"><span class="date-chip">Sat 24 Oct • 15:00</span><span class="price">R400</span></div>
+              <h3>Zaza – Blowing the Horn of Chronicle</h3>
+              <div class="event-meta">Gibson Kente Theatre, Soweto Theatre • Jabulani</div>
+              <p class="event-desc">Zanele “Zaza” Mokhethi celebrates ten years of her debut live album. Webtickets lists R400, with a block-booking price of R200 for groups of 10 or more.</p>
+              <div class="buttons">
+                <a class="pill pill-red" href="https://www.webtickets.co.za/v2/event.aspx?itemid=1599074494" target="_blank" rel="noopener">BOOK TICKETS</a>
+                <a class="pill pill-green" href="https://wa.me/27653327762?text=Hi%20Senaoane%20Online%2C%20please%20help%20me%20with%20Zaza%20tickets%20at%20Soweto%20Theatre." target="_blank" rel="noopener">WHATSAPP EVENT INFO</a>
+                <a class="pill pill-outline" href="tel:+27104461489">CALL TICKET SALES</a>
+              </div>
+            </article>
+          </div>
+          <p class="disclaimer">Dates, prices and availability were checked against the official theatre programme and Webtickets on 23 October 2026. Confirm any last-minute changes with the organiser.</p>
+        </section>
+
+        <section id="family-outdoors" aria-labelledby="outdoors-heading">
+          <div class="section-head">
+            <div><h2 id="outdoors-heading">Kids, parks & outdoor plans</h2><p>Flexible local outings—not separately dated events. Call ahead for current conditions.</p></div>
+            <span class="section-tag">Family ideas</span>
+          </div>
+          <div class="outing-grid">
+            <article class="outing">
+              <img src="events-assets/thokoza-park.jpg" alt="Outdoor space at Thokoza Park in Moroka, Soweto" loading="lazy">
+              <div class="outing-body">
+                <span class="date-chip">Park • Picnic • Play</span>
+                <h3>Thokoza Park & Moroka Dam</h3>
+                <p>Joburg City Parks lists picnic and braai spots, a children’s play area, walkways, parking and toilets. Address: 1682 Ntuli Street, Moroka. Take care around the dam and keep children within sight.</p>
+                <div class="photo-credit">Image: <a href="https://www.citizen.co.za/soweto-urban/image-gallery/2016/10/18/city-parks-maintains-thokoza-park-daily/" target="_blank" rel="noopener">Soweto Urban / The Citizen</a></div>
+                <div class="buttons">
+                  <a class="pill pill-outline" href="https://www.google.com/maps/search/?api=1&query=Thokoza+Park+Moroka+Soweto" target="_blank" rel="noopener">GET DIRECTIONS</a>
+                  <a class="pill pill-green" href="https://wa.me/27653327762?text=Hi%20Senaoane%20Online%2C%20please%20send%20me%20Thokoza%20Park%20outing%20information." target="_blank" rel="noopener">WHATSAPP US</a>
+                  <a class="pill pill-outline" href="tel:+27119381820">CALL PARK OFFICE</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="outing">
+              <img src="events-assets/soweto-towers.jpg" alt="Adventure bungee activity at Soweto Towers" loading="lazy">
+              <div class="outing-body">
+                <span class="date-chip">Adventure • Fri–Sun 10:00 to sunset</span>
+                <h3>Soweto Towers, Orlando East</h3>
+                <p>Try the vertical-adventure site for bungee, SCAD freefall, swings or climbing. The operator says most activities are first-come, first-served; rain or lightning can stop activities.</p>
+                <div class="photo-credit">Photo: Orlando Towers via <a href="https://www.adrex.com/en/articles/earth/bungee/orlando-towers-bungee-electrifying-experience/" target="_blank" rel="noopener">Adrex</a></div>
+                <div class="small-note"><b>Kids & safety:</b> paintball is 12+; bungee/SCAD weight limits are 35–110 kg. Check activity rules and prices with the operator before travelling.</div>
+                <div class="buttons">
+                  <a class="pill pill-outline" href="https://sowetotowers.co.za/faq/" target="_blank" rel="noopener">CHECK RULES</a>
+                  <a class="pill pill-green" href="https://wa.me/27653327762?text=Hi%20Senaoane%20Online%2C%20please%20send%20me%20Soweto%20Towers%20family%20outing%20information." target="_blank" rel="noopener">WHATSAPP US</a>
+                  <a class="pill pill-outline" href="tel:+27716744343">CALL TOWERS</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="nightlife" aria-labelledby="nightlife-heading">
+          <div>
+            <h3 id="nightlife-heading">Clubs & nightlife</h3>
+            <p>We couldn’t confirm a dated Soweto club lineup for 23–25 October from reliable current listings. Check the club’s own page before setting off; send us a verified flyer or ticket link and we’ll add it.</p>
+            <div class="buttons">
+              <a class="pill pill-green" href="https://wa.me/27653327762?text=Hi%20Senaoane%20Online%2C%20I%20have%20a%20verified%20Soweto%20club%20event%20to%20share." target="_blank" rel="noopener">SEND A CLUB EVENT</a>
+              <a class="pill pill-white" href="mailto:senaoaneonline1@gmail.com?subject=Verified%20Soweto%20club%20event">EMAIL THE LISTING</a>
+            </div>
+          </div>
+          <span class="date-chip">Line-up not confirmed</span>
+        </section>
+
+        <section class="submit" aria-label="Submit a community event">
+          <h3>Have a local event or family activity to share?</h3>
+          <p>Send the date, venue, price, organiser contact and a public ticket or event link. We’ll check the details before listing it.</p>
+          <div class="buttons">
+            <a class="pill pill-red" href="mailto:senaoaneonline1@gmail.com?subject=Submit%20a%20Soweto%20event">EMAIL AN EVENT</a>
+            <a class="pill pill-green" href="https://wa.me/27653327762?text=Hi%20Senaoane%20Online%2C%20I%20would%20like%20to%20submit%20a%20local%20event." target="_blank" rel="noopener">WHATSAPP US</a>
+            <a class="pill pill-outline" href="tel:+27653327762">CALL SENAOANE ONLINE</a>
+          </div>
+        </section>
+      </main>
+
+      <aside class="stack" aria-label="Weather and local adverts">
+        <section class="side-card" id="weather">
+          <h2 class="side-title">Soweto weekend weather</h2>
+          <div class="weather-banner">
+            <div class="weather-date">Saturday–Sunday • 24–25 October</div>
+            <h3>Partly cloudy; showers possible</h3>
+            <p>SAWS expects partly cloudy conditions over central and eastern South Africa, with isolated showers or thunderstorms possible. Otherwise, conditions should be fine and warm to hot. No unverified temperature numbers are shown.</p>
+          </div>
+          <div class="advice"><b>Outdoor tip:</b> pack water, sunscreen and a light rain layer. Check SAWS warnings before leaving. Soweto Towers says rain and lightning can pause activities.</div>
+          <a class="source-link" href="https://x.com/SAWeatherServic/status/2113258356618199215" target="_blank" rel="noopener">View SAWS weekend outlook →</a>
+        </section>
+
+        <section class="side-card" id="adverts">
+          <h2 class="side-title">Local business adverts</h2>
+          <p class="small-note">Support local businesses. Contact advertisers directly for current availability and orders.</p>
+          <div class="ads">
+            <article class="ad">
+              <img src="events-assets/ad-bizzy-bee.jpg" alt="Bizzy Bee Bakery and Catering advert" loading="lazy">
+              <div class="ad-copy">
+                <div class="ad-label">Paid advert • Senaoane</div>
+                <h3>Bizzy Bee Bakery & Catering</h3>
+                <p>Good Things Are Always Baking! Scones, jam tarts, muffins, bread and custom cakes. Homemade treats baked with love. Order: 084 985 5864.</p>
+                <div class="buttons">
+                  <a class="pill pill-green" href="https://wa.me/27849855864?text=Hi%20Bizzy%20Bee%20Bakery%2C%20I%20saw%20your%20advert%20on%20Senaoane%20Online." target="_blank" rel="noopener">WHATSAPP</a>
+                  <a class="pill pill-outline" href="tel:+27849855864">CALL</a>
+                </div>
+              </div>
+            </article>
+            <article class="ad">
+              <img src="events-assets/ad-qhojeng.jpg" alt="Qhojeng Bakery daily supply advert" loading="lazy">
+              <div class="ad-copy">
+                <div class="ad-label">Paid advert • Molapo</div>
+                <h3>Qhojeng Bakery</h3>
+                <p>Fresh bread and rolls, plus bulk potatoes. Delivery available. 1944 Masiane Street, Molapo. Order: 060 421 9665.</p>
+                <div class="buttons">
+                  <a class="pill pill-green" href="https://wa.me/27604219665?text=Hi%20Qhojeng%20Bakery%2C%20I%20saw%20your%20advert%20on%20Senaoane%20Online." target="_blank" rel="noopener">WHATSAPP</a>
+                  <a class="pill pill-outline" href="tel:+27604219665">CALL</a>
+                </div>
+              </div>
+            </article>
+            <article class="ad">
+              <img src="events-assets/ad-elevation.jpg" alt="Elevation Experience Catering advert" loading="lazy">
+              <div class="ad-copy">
+                <div class="ad-label">Paid advert • Moroka</div>
+                <h3>Elevation Experience Catering</h3>
+                <p>Event catering for weddings, birthdays and corporate occasions. 1842 Nuse Street, Moroka, Soweto. Call or WhatsApp 062 127 2664.</p>
+                <div class="buttons">
+                  <a class="pill pill-green" href="https://wa.me/27621272664?text=Hi%20Elevation%20Experience%2C%20I%20saw%20your%20advert%20on%20Senaoane%20Online." target="_blank" rel="noopener">WHATSAPP</a>
+                  <a class="pill pill-outline" href="tel:+27621272664">CALL</a>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="disclaimer">To advertise on this page, email <a href="mailto:senaoaneonline1@gmail.com?subject=Advertise%20on%20Senaoane%20Events">senaoaneonline1@gmail.com</a>.</div>
+        </section>
+
+        <section class="side-card">
+          <h2 class="side-title">Useful event links</h2>
+          <div class="buttons">
+            <a class="pill pill-dark" href="https://www.sowetotheatre.com/" target="_blank" rel="noopener">SOWETO THEATRE</a>
+            <a class="pill pill-outline" href="https://www.jhbcityparksandzoo.com/services-facilities/parks/find-a-park/thokoza-park" target="_blank" rel="noopener">THOKOZA PARK</a>
+            <a class="pill pill-outline" href="https://sowetotowers.co.za/faq/" target="_blank" rel="noopener">SOWETO TOWERS</a>
+          </div>
+        </section>
+      </aside>
+    </div>
   </div>
-  <div class="flex items-center gap-2">
-    <a href="https://senaoanesoweto.webflow.io/" class="bg-white text-black text-xs font-bold px-4 py-2 rounded-full">🏠 HOME</a>
-    <a href="https://wa.me/27653327762" class="bg-[#E30613] text-white text-xs font-bold px-3 py-2 rounded-full">WhatsApp</a>
-  </div>
-</header>
 
-<div class="bg-[#E30613] text-white px-4 py-2 text-xs font-bold flex items-center gap-2">
-  <span class="bg-white text-[#E30613] px-2 py-0.5 rounded-full text-[10px] animate-pulse">TODAY</span>
-  <span>TODAY 25 Sept: Pride March Vilakazi St • 26 Sept: Pride Celebration + Creative Biz Fund + Business Showcase • 27 Sept: BlueShift Books + CV Workshop</span>
-</div>
-
-<div class="max-w-[1250px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-4 p-3 md:p-4">
-  <main>
-    <div class="bg-black text-white rounded-[20px] p-5 md:p-7 mb-4">
-      <span class="bg-[#E30613] text-white text-[10px] font-black px-3 py-1 rounded-full">UPDATED 25 SEPT 2026 • TODAY</span>
-      <h1 class="font-black text-[28px] md:text-[36px] leading-[0.95] mt-3">WHAT'S ON<br><span class="text-[#E30613]">IN & AROUND</span><br>SENAOANE</h1>
-      <p class="text-[13px] text-white/60 mt-3">Today's events with date under each event. Verified Soweto focus.</p>
-      <div class="flex gap-2 mt-4 flex-wrap">
-        <span class="text-[11px] bg-white text-black px-3 py-1.5 rounded-full font-bold">📅 25 Sept - 5 Oct 2026 TODAY</span>
-        <span class="text-[11px] bg-[#E30613] text-white px-3 py-1.5 rounded-full font-bold">📍 7 Events</span>
-      </div>
+  <footer>
+    SENAOANE ONLINE • Local weekend events for Senaoane, Phiri, Dlamini, Jabulani and Soweto.<br>
+    Guide checked Friday 23 October 2026. Confirm event details, prices, weather and availability with organisers before travelling.
+    <div class="footer-links">
+      <a href="mailto:senaoaneonline1@gmail.com">Email</a>
+      <a href="https://wa.me/27653327762" target="_blank" rel="noopener">WhatsApp +27 65 332 7762</a>
+      <a href="tel:+27653327762">Call Senaoane Online</a>
+      <a href="https://senaoanesoweto.webflow.io/">Home</a>
     </div>
-
-    <div id="events-feed" class="space-y-4">
-      <article class="bg-white rounded-[20px] shadow-sm border overflow-hidden">
-        <div class="grid md:grid-cols-[200px_1fr] gap-0">
-          <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=600" class="w-full h-[160px] md:h-full object-cover">
-          <div class="p-4">
-            <span class="bg-[#E30613] text-white text-[10px] font-black px-2.5 py-1 rounded-full">TODAY • LIVE NOW</span>
-            <h2 class="font-black text-[18px] mt-2">Soweto Pride March 2026 - Vilakazi Street</h2>
-            <div class="mt-2 bg-black text-white text-[11px] font-bold px-3 py-1 rounded-full inline-flex">📅 Thursday, 25 September 2026 • 10:00 AM - Late</div>
-            <p class="text-[11px] text-gray-500 mt-1">📍 Vilakazi Street, Orlando West</p>
-            <p class="text-[13px] text-gray-700 mt-2">Theme "iSango leNkululeko – Our Heritage". Free entry, traditional attire.</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="bg-white rounded-[20px] shadow-sm border overflow-hidden">
-        <div class="grid md:grid-cols-[200px_1fr] gap-0">
-          <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=600" class="w-full h-[160px] md:h-full object-cover">
-          <div class="p-4">
-            <span class="bg-purple-600 text-white text-[10px] font-black px-2.5 py-1 rounded-full">CELEBRATION</span>
-            <h2 class="font-black text-[18px] mt-2">Soweto Pride Celebration - Queer Joy</h2>
-            <div class="mt-2 bg-purple-100 text-purple-800 text-[11px] font-bold px-3 py-1 rounded-full inline-flex">📅 Friday, 26 September 2026 • 10:00 - Late</div>
-            <p class="text-[11px] text-gray-500 mt-1">📍 Kwa Lichaba Chesanyama, Vilakazi St</p>
-            <p class="text-[13px] text-gray-700 mt-2">Music, performances, culture, food. Free entry.</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="bg-white rounded-[20px] shadow-sm border overflow-hidden">
-        <div class="grid md:grid-cols-[200px_1fr] gap-0">
-          <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=600" class="w-full h-[160px] md:h-full object-cover">
-          <div class="p-4">
-            <span class="bg-yellow-600 text-white text-[10px] font-black px-2.5 py-1 rounded-full">BUSINESS FUND</span>
-            <h2 class="font-black text-[18px] mt-2">Creative Biz Fund Launch - Soweto Theatre</h2>
-            <div class="mt-2 bg-yellow-100 text-yellow-800 text-[11px] font-bold px-3 py-1 rounded-full inline-flex">📅 Friday, 26 September 2026 • 09:00 - 13:00</div>
-            <p class="text-[11px] text-gray-500 mt-1">📍 Soweto Theatre, Jabulani • Minister Ndabeni</p>
-            <p class="text-[13px] text-gray-700 mt-2">Support creative enterprises. 100 local entrepreneurs showcase.</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="bg-white rounded-[20px] shadow-sm border overflow-hidden">
-        <div class="grid md:grid-cols-[200px_1fr] gap-0">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600" class="w-full h-[160px] md:h-full object-cover">
-          <div class="p-4">
-            <span class="bg-black text-white text-[10px] font-black px-2.5 py-1 rounded-full">MARKET</span>
-            <h2 class="font-black text-[18px] mt-2">Soweto Small Business Showcase - 100 Entrepreneurs</h2>
-            <div class="mt-2 bg-gray-200 text-black text-[11px] font-bold px-3 py-1 rounded-full inline-flex">📅 Saturday - Sunday, 26-27 September 2026 • 09:00 - 18:00</div>
-            <p class="text-[11px] text-gray-500 mt-1">📍 Maponya Mall</p>
-            <p class="text-[13px] text-gray-700 mt-2">Spazas, Bizzy Bee cakes, CV services, BlueShift books. Free entry.</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="bg-white rounded-[20px] shadow-sm border-2 border-blue-200 overflow-hidden">
-        <div class="grid md:grid-cols-[200px_1fr] gap-0">
-          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600" class="w-full h-[160px] md:h-full object-cover">
-          <div class="p-4">
-            <span class="bg-blue-700 text-white text-[10px] font-black px-2.5 py-1 rounded-full">EDUCATION • GRADE 12</span>
-            <h2 class="font-black text-[18px] mt-2">BlueShift STEM Books - Physical Sciences Grade 12 CAPS 2026</h2>
-            <div class="mt-2 bg-blue-100 text-blue-800 text-[11px] font-bold px-3 py-1 rounded-full inline-flex">📅 Saturday, 27 September 2026 • 10:00 - 15:00 • Every Saturday</div>
-            <p class="text-[11px] text-gray-500 mt-1">📍 Senaoane Schools & Nyamboso Cafe • S.M. Stemela</p>
-            <p class="text-[13px] text-gray-700 mt-2">Chemistry Paper 2 + Physics Paper 1. Full-colour, 100% CAPS, past NSC Qs, QR video lessons.</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="bg-white rounded-[20px] shadow-sm border overflow-hidden">
-        <div class="grid md:grid-cols-[200px_1fr] gap-0">
-          <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=600" class="w-full h-[160px] md:h-full object-cover">
-          <div class="p-4">
-            <span class="bg-blue-600 text-white text-[10px] font-black px-2.5 py-1 rounded-full">JOBS • CV</span>
-            <h2 class="font-black text-[18px] mt-2">CV Workshop - Nyamboso Cafe</h2>
-            <div class="mt-2 bg-blue-100 text-blue-800 text-[11px] font-bold px-3 py-1 rounded-full inline-flex">📅 Saturday, 27 September 2026 • 09:00 - 15:00</div>
-            <p class="text-[11px] text-gray-500 mt-1">📍 Nyamboso Logistics Cafe</p>
-            <p class="text-[13px] text-gray-700 mt-2">Download, make, print, email CV. Link: nyamboselogistics.webflow.io/cafe#cv-form</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="bg-white rounded-[20px] shadow-sm border overflow-hidden">
-        <div class="grid md:grid-cols-[200px_1fr] gap-0">
-          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=600" class="w-full h-[160px] md:h-full object-cover">
-          <div class="p-4">
-            <span class="bg-pink-500 text-white text-[10px] font-black px-2.5 py-1 rounded-full">FAMILY FEST</span>
-            <h2 class="font-black text-[18px] mt-2">Soweto Colour Festival</h2>
-            <div class="mt-2 bg-pink-100 text-pink-800 text-[11px] font-bold px-3 py-1 rounded-full inline-flex">📅 Friday, 3 October 2026 • 10:00 - 18:00</div>
-            <p class="text-[11px] text-gray-500 mt-1">📍 Monalisa Lifestyle</p>
-            <p class="text-[13px] text-gray-700 mt-2">Colour powder, DJs, kids zone, food.</p>
-          </div>
-        </div>
-      </article>
-    </div>
-  </main>
-
-  <aside class="space-y-4">
-    <div class="bg-white rounded-2xl shadow-sm border p-4">
-      <h3 class="font-black text-sm">SOWETO WEATHER LIVE</h3>
-      <div class="mt-3 flex items-center gap-3"><div class="text-4xl">⛅</div><div><div class="font-black text-xl">18°C - 26°C</div><div class="text-xs text-gray-500">Partly cloudy • Today 25 Sept</div></div></div>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-sm border p-4">
-      <h3 class="font-black text-sm flex items-center gap-2"><span class="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center text-[12px]">🎰</span> LOTTO RESULTS</h3>
-      <div class="mt-3 border rounded-xl p-3 bg-yellow-50/50">
-        <div class="text-[11px] font-bold text-gray-500">Sat, 22 Sept 2026 • R13.5 Million</div>
-        <div class="flex gap-1 mt-2"><span class="w-6 h-6 bg-[#E30613] text-white rounded-full flex items-center justify-center text-[10px] font-bold">2</span><span class="w-6 h-6 bg-[#E30613] text-white rounded-full flex items-center justify-center text-[10px] font-bold">18</span><span class="w-6 h-6 bg-[#E30613] text-white rounded-full flex items-center justify-center text-[10px] font-bold">29</span><span class="w-6 h-6 bg-[#E30613] text-white rounded-full flex items-center justify-center text-[10px] font-bold">31</span><span class="w-6 h-6 bg-[#E30613] text-white rounded-full flex items-center justify-center text-[10px] font-bold">42</span><span class="w-6 h-6 bg-[#E30613] text-white rounded-full flex items-center justify-center text-[10px] font-bold">51</span></div>
-        <div class="text-[11px] mt-1">Bonus: <b>20</b></div>
-      </div>
-      <a href="https://www.nationallottery.co.za/results" target="_blank" class="mt-3 block text-[11px] text-center py-2 rounded-full font-bold border">Check Results →</a>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-sm border-2 border-blue-700 overflow-hidden">
-      <div class="bg-blue-800 text-white text-[11px] font-black px-3 py-1.5 flex justify-between"><span>📚 BLUESHIFT STEM BOOKS</span><span>GRADE 12 CAPS</span></div>
-      <div class="p-4 bg-blue-50">
-        <p class="text-[12px] font-bold text-gray-800">Chemistry Paper 2 + Physics Paper 1</p>
-        <p class="text-[11px] text-gray-600 mt-1">100% CAPS • Past NSC Questions • QR Video Lessons</p>
-        <p class="text-[10px] text-blue-700 font-bold mt-2">Every Saturday at Nyamboso Cafe & Schools</p>
-        <div class="mt-3 bg-blue-600 text-white text-[11px] font-bold px-3 py-2 rounded-full text-center">Get BlueShift Books</div>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-sm border-2 border-[#FFB800] overflow-hidden">
-      <div class="bg-[#FFB800] text-black text-[11px] font-black px-3 py-1.5 flex justify-between"><span>🍰 BIZZY BEE + CV</span><span>NYAMBOSO</span></div>
-      <div class="p-4 bg-yellow-50">
-        <p class="text-[12px] font-bold text-gray-800">Fresh cakes, bread & pastries daily</p>
-        <p class="text-[11px] text-gray-600 mt-1">Free CV help & job guidance</p>
-        <p class="text-[10px] text-gray-500 mt-2">Saturday 27 Sept: CV Workshop 09:00-15:00</p>
-        <a href="https://nyamboselogistics.webflow.io/cafe#cv-form" target="_blank" class="mt-3 w-full bg-black text-white text-xs font-bold px-3 py-2 rounded-full text-center block">Visit Nyamboso Cafe</a>
-      </div>
-    </div>
-
-    <div class="bg-black rounded-2xl p-4 text-white text-center">
-      <div class="text-[10px] text-white/50 font-bold tracking-widest">SEND US YOUR EVENT</div>
-      <div class="font-black mt-2 text-sm">List your event on this page</div>
-      <div class="text-xs text-white/60 mt-1">Community events, classes, markets - free to list</div>
-      <a href="https://wa.me/27653327762?text=Event%20to%20list" class="mt-3 inline-block bg-[#E30613] text-white text-xs font-bold px-4 py-2 rounded-full">WhatsApp Event Info</a>
-    </div>
-  </aside>
-</div>
-
-<footer class="bg-black text-white/60 text-xs p-4 text-center mt-8 border-t-4 border-[#E30613]">
-  SENAOANE EVENTS - What's On in Soweto • Updated 25 Sept 2026 • Soweto Pride, BlueShift Books, CV Workshops, Business Showcase • WhatsApp +27 65 332 7762
-</footer>
-
-<script defer src="./site-nav.js?v=20261018-funeral-links"></script>
+  </footer>
 </body>
 </html>
