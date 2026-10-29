@@ -99,7 +99,7 @@
     "addressCountry": "ZA"
   },
   "sameAs": [
-    "https://wa.me/27653327762"
+    "mailto:senaoaneonline1@gmail.com?subject=Senaoane%20Online%20Enquiry"
   ]
 }
 </script>
@@ -165,7 +165,7 @@
   </div>
   <nav class="flex items-center gap-2" aria-label="Main navigation">
     <a href="https://senaoanesoweto.webflow.io/" class="bg-white text-black text-xs font-bold px-4 py-2 rounded-full">🏠 HOME</a>
-    <a href="https://wa.me/27653327762" target="_blank" rel="noopener noreferrer" class="bg-[#E30613] text-white text-xs font-bold px-3 py-2 rounded-full">WhatsApp Help</a>
+    <a href="mailto:senaoaneonline1@gmail.com?subject=Senaoane%20Online%20Enquiry" target="_blank" rel="noopener noreferrer" class="bg-[#E30613] text-white text-xs font-bold px-3 py-2 rounded-full">Email</a>
   </nav>
 </header>
 
@@ -476,7 +476,7 @@
       <nav class="mt-3 space-y-2" aria-label="Quick links">
         <a href="https://senaoanesoweto.webflow.io/" class="flex items-center justify-between bg-black text-white text-xs font-bold p-3 rounded-xl"><span>🏠 Back to Home</span><span>→</span></a>
         <a href="https://forms.gle/PPtsWKGcvqSapxDz9" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between bg-[#E30613] text-white text-xs font-bold p-3 rounded-xl"><span>📝 Submit Question / Job</span><span>→</span></a>
-        <a href="https://wa.me/27653327762" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between bg-green-600 text-white text-xs font-bold p-3 rounded-xl"><span>💬 WhatsApp Help Line</span><span>→</span></a>
+        <a href="mailto:senaoaneonline1@gmail.com?subject=Senaoane%20Online%20Enquiry" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between bg-green-600 text-white text-xs font-bold p-3 rounded-xl"><span>💬 Email</span><span>→</span></a>
         <div class="grid grid-cols-2 gap-2 pt-1">
           <a href="#howto" class="bg-gray-100 text-xs font-bold p-3 rounded-xl text-center">📘 How-To</a>
           <a href="#downloads" class="bg-gray-100 text-xs font-bold p-3 rounded-xl text-center">📥 Downloads</a>
@@ -496,13 +496,13 @@
       <div class="text-[10px] text-white/50 font-bold tracking-widest">NEED MORE HELP?</div>
       <div class="font-black mt-2 text-sm">WhatsApp us your problem</div>
       <div class="text-xs text-white/60 mt-1">CV, SASSA, water, jobs, staff posts - we reply in 1 hour</div>
-      <a href="https://wa.me/27653327762?text=Helpful%20Help%20Resource%20Hub" class="mt-3 inline-block bg-[#E30613] text-white text-xs font-bold px-4 py-2 rounded-full">Chat Now</a>
+      <a href="mailto:senaoaneonline1@gmail.com?subject=Senaoane%20Online%20Enquiry&body=Helpful%20Help%20Resource%20Hub" class="mt-3 inline-block bg-[#E30613] text-white text-xs font-bold px-4 py-2 rounded-full">Email Now</a>
     </div>
   </aside>
 </div>
 
 <footer class="bg-black text-white/60 text-xs p-4 text-center mt-8 border-t-4 border-[#E30613]" role="contentinfo">
-  <p>SENAOANE RESOURCE HUB - Helpful Help for Senaoane, Phiri & Dlamini • Updated <time datetime="2026-09-25">25 Sept 2026</time> • WhatsApp +27 65 332 7762</p>
+  <p>SENAOANE RESOURCE HUB - Helpful Help for Senaoane, Phiri & Dlamini • Updated <time datetime="2026-09-25">25 Sept 2026</time> • Email senaoaneonline1@gmail.com</p>
   <p class="mt-1">Sources: Google Digital Garage, Coursera, Indeed, Canva, FNB • Free community resource for Soweto residents</p>
 </footer>
 
@@ -510,7 +510,7 @@
 function askQ(){
   const v=document.getElementById('qa-input').value.trim();
   if(!v) return;
-  const url='https://wa.me/27653327762?text='+encodeURIComponent('Resource Hub Q: '+v);
+  const url='mailto:senaoaneonline1@gmail.com?subject=Senaoane%20Online%20Enquiry&body='+encodeURIComponent('Resource Hub Q: '+v);
   window.open(url,'_blank');
   const list=document.getElementById('qa-list');
   const d=document.createElement('div');
